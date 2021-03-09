@@ -28,28 +28,45 @@
 
         }
 
+
         var xDevice = navigator.userAgent;
-        var findAndoid = indexOf("Android");
-        var findWindows = indexOf("Windows");
-        
+
+        var findAndroid = xDevice.indexOf("Android");
+
+        var findWindows = xDevice.indexOf("Windows");
+
         var xAndroid = false;
+
         var xWindows = false;
 
+        var Find = 0;
+
         if(findAndroid != -1){
+
            alert("Ваше устройство — телефон");
+
             xAndroid = true;
-           } else {
-           alert("Устройство не обнаружено");
-              } 
+
+            Find = 1;
+
+           } 
+
         if(findWindows != -1){
+
            alert("Ваше устройство - ПК");
+
             xWindows = true;
-           } else {
-           alert("Устройство не обнаружено");
-              } 
 
- 
+            Find = 1;
 
+           }
+
+        if(Find == 0){
+
+         alert("Устройство не определенно");
+
+
+         }
     </script>
    
     
