@@ -28,7 +28,27 @@
 
         }
 
-        var x
+        var xDevice = navigator.userAgent;
+        var findAndoid = indexOf("Android");
+        var findWindows = indexOf("Windows");
+        
+        var Android = false;
+        var Windows = false;
+
+        if(findAndroid != -1){
+           alert("Ваше устройство — телефон");
+            Android = true;
+           } else {
+           alert("Устройство не обнаружено");
+              } 
+        if(findWindows != -1){
+           alert("Ваше устройство - ПК");
+            Windows = true;
+           } else {
+           alert("Устройство не обнаружено");
+              } 
+
+ 
 
     </script>
    
