@@ -7,7 +7,7 @@ h1 {
     left: 0%;
     top: 0%;
     transform: translate(-0%);
-    width: 400px;
+    width: 13%;
     height: 4000px;
     background: #ffebcd;
     border-width:7;
@@ -22,7 +22,7 @@ h1 {
     left: 100%;
     top: 0%;
     transform: translate(-100%);
-    width: 400px;
+    width: 13%;
     height: 4000px;
     background: #ffebcd;
     border-width:7;
