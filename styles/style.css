@@ -1,12 +1,13 @@
 h1 {
     background-color: blanchedalmond;
 }
-#LeftBorder {
+.LeftBorder {
     position: absolute;
     top: 0px;
     left: 0px;
-    weight: 200px;
+    width: 200px;
     height: 600px;
+    background: #464b50;
 
  
 
