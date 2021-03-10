@@ -4,8 +4,7 @@
 <head>
     <link rel="stylesheet" href="styles/style.css"/>
     <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мои проекты</title>
     
 
@@ -83,26 +82,44 @@
             
         }
         
-        function CheckSee(OBJ,StandartPos){  
-        var x; 
-        x = window.pageYOffset;
+        function CheckY(OBJ,StandartPos){  
+        var y; 
+        y = window.pageYOffset;
         //element = document.getElementById("LINE");
         //xTwo = window.getComputedStyle(element).top;
         if(StandartPos > 1){
-        x = x + StandartPos;
+        y = y + StandartPos;
         }
-        document.getElementById(OBJ).style.top = x + "px";
+        document.getElementById(OBJ).style.top = y + "px";
+        }
+
+
+        function CheckX(){
+
+
+            x =  window.innerWidth;
+            if(xWindows == true){
+            if(x <= 1324){
+            document.getElementById("LeftBorder").hidden = true;
+            document.getElementById("RightBorder").hidden = true;
+            } else {
+            document.getElementById("LeftBorder").hidden = false;
+            document.getElementById("RightBorder").hidden = false;
+            }
+            }  
+
         }
         
         
 
-        setInterval("CheckSee('LINE',0)",1);
-        setInterval("CheckSee('outLINE',65)",1);
-        setInterval("CheckSee('MoreOne',15)",1);
-        setInterval("CheckSee('MoreTwo',30)",1);
-        setInterval("CheckSee('MoreThree',45)",1);
-        setInterval("CheckSee('ClickBlockOpen',15)",1);
-        setInterval("CheckSee('ClickBlockClose',15)",1);
+        setInterval("CheckY('LINE',0)",1);
+        setInterval("CheckY('outLINE',65)",1);
+        setInterval("CheckY('MoreOne',15)",1);
+        setInterval("CheckY('MoreTwo',30)",1);
+        setInterval("CheckY('MoreThree',45)",1);
+        setInterval("CheckY('ClickBlockOpen',15)",1);
+        setInterval("CheckY('ClickBlockClose',15)",1);
+        setInterval(CheckX,1);
         
         
 
