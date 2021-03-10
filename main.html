@@ -10,21 +10,21 @@
 
 </head>
 
-<body bgcolor="#fff1dc">
+<body style="height: 8000px;" bgcolor="#fff1dc">
 
   
-
+<!--Сайт был разработан Бабиковом В.В 2021г.-->
 
     
     <div id="LINE" style="position: absolute; left: 100%; top: 0px; transform: translate(-100%); width: 100%; height: 55px; background: #ffebcd; border-width:9px; border-color: #ffd493; border-style: solid;"></div>
     <div id="outLINE" style="position: absolute; left: 100%; top: 70px; transform: translate(-100%); width: 100%; height: 6px; background: #ffd493;"></div>
     
-    <h1 style="position: absolute; left: 25%; top: -2px; transform: translate(-20%); width: 500; height: 25px;">Главная страница / ИНФО</h1>
-
     <div id="MoreOne" style="position: absolute; left: 80%; top: 15px; width: 36px; height: 6px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
     <div id="MoreTwo" style="position: absolute; left: 80%; top: 30px; width: 36px; height: 6px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
     <div id="MoreThree" style="position: absolute; left: 80%; top: 45px; width: 36px; height: 6px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
     
+    <h1 id="heading" style="position: absolute; left: 25%; top: -2px; transform: translate(-20%); width: 500; height: 25px;">Главная страница / ИНФО</h1>
+
     <div hidden onclick="ClickOnMore(0);" id="ClickBlockOpen" style="position: absolute; left: 80%; top: 15px; width: 42px; height: 45px; background: #000000; opacity: 0;"></div>
     <div hidden onclick="ClickOnMore(1);" id="ClickBlockClose" style="position: absolute; left: 80%; top: 15px; width: 42px; height: 45px; background: #000000; opacity: 0;"></div>
     
@@ -119,6 +119,7 @@
         setInterval("CheckY('MoreThree',45)",1);
         setInterval("CheckY('ClickBlockOpen',15)",1);
         setInterval("CheckY('ClickBlockClose',15)",1);
+        setInterval("CheckY('heading',-2)",1);
         setInterval(CheckX,1);
         
         
