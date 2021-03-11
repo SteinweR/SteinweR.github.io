@@ -23,13 +23,18 @@
         adaa21r</h4>-->
 
  <!--Сайт был разработан Бабиковом В.В 2021г.-->
-    <img id="FirstGame" onclick="runToSite(0);" onmouseout="ImgAnimations('FirstGame',1,'FirstGameTXT',0);" onmouseover="ImgAnimations('FirstGame',0,'FirstGameTXT',0);" src="https://img2.fonwall.ru/o/vb/landscape-nature-river.jpg" style=" border-width:10px; border-color: #ffb94f; border-style: outset; position: absolute; left: 0px; top: 80px; width: 360px; height: 360px;"/>
+    <div id="GameFone" style="position: absolute; left: 100%; top: 90px; transform: translate(-100%); width: 100%; height: 410px; background: #ffc56d;"></div>
+    <div style="position: absolute; left: 100%; top: 90px; transform: translate(-100%); width: 100%; height: 6px; background: #e49012;"></div>
+    <div id="GameLineTwo" style="position: absolute; left: 100%; top: 500px; transform: translate(-100%); width: 100%; height: 6px; background: #e49012;"></div>
+    
+    
+    <img id="FirstGame" onclick="runToSite(0);" onmouseout="ImgAnimations('FirstGame',1,'FirstGameTXT',0);" onmouseover="ImgAnimations('FirstGame',0,'FirstGameTXT',0);" src="https://img2.fonwall.ru/o/vb/landscape-nature-river.jpg" style=" border-width:10px; border-color: #ff9900; border-style: outset; position: absolute; left: 0px; top: 110px; width: 360px; height: 360px;"/>
      <h1 hidden id="FirstGameTXT" style="color: aquamarine; position: absolute; left: 0px; top: 0px;">Змейка</h1>
 
-     <img id="TwoGame" onclick="runToSite(0);" onmouseout="ImgAnimations('TwoGame',1,'TwoGameTXT',0);" onmouseover="ImgAnimations('TwoGame',0,'TwoGameTXT',0);" src="https://img2.fonwall.ru/o/vb/landscape-nature-river.jpg" style=" border-width:10px; border-color: #ffb94f; border-style: outset; position: absolute; left: 400px; top: 80px; width: 360px; height: 360px;"/>
+     <img id="TwoGame" onclick="runToSite(0);" onmouseout="ImgAnimations('TwoGame',1,'TwoGameTXT',0);" onmouseover="ImgAnimations('TwoGame',0,'TwoGameTXT',0);" src="https://img2.fonwall.ru/o/vb/landscape-nature-river.jpg" style=" border-width:10px; border-color: #ff9900; border-style: outset; position: absolute; left: 400px; top: 110px; width: 360px; height: 360px;"/>
      <h1 hidden id="TwoGameTXT" style="color: #d17d00; position: absolute; left: 0px; top: 0px;">Кликер</h1>
     
-     <img id="ThreeGame" onclick="runToSite(0);" onmouseout="ImgAnimations('ThreeGame',1,'ThreeGameTXT',0,30);" onmouseover="ImgAnimations('ThreeGame',0,'ThreeGameTXT',0,30);" src="https://img2.fonwall.ru/o/vb/landscape-nature-river.jpg" style=" border-width:10px; border-color: #ffb94f; border-style: outset; position: absolute; left: 800px; top: 80px; width: 360px; height: 360px;"/>
+     <img id="ThreeGame" onclick="runToSite(0);" onmouseout="ImgAnimations('ThreeGame',1,'ThreeGameTXT',0,30);" onmouseover="ImgAnimations('ThreeGame',0,'ThreeGameTXT',0,30);" src="https://img2.fonwall.ru/o/vb/landscape-nature-river.jpg" style=" border-width:10px; border-color: #ff9900; border-style: outset; position: absolute; left: 800px; top: 110px; width: 360px; height: 360px;"/>
      <h1 hidden id="ThreeGameTXT" style="color: #66d41c; position: absolute; left: 0px; top: 0px;">Платформер</h1>
     
     <div id="LINE" style="position: absolute; left: 100%; top: 0px; transform: translate(-100%); width: 100%; height: 55px; background: #ffe3b9; border-width:9px; border-color: #ffd493; border-style: solid;"></div>
@@ -53,7 +58,15 @@
 
 
         function runToSite(KUDA){
+            if(KUDA == 0){
             location.href="https://github.com/SteinweR/SteinweR.github.io";
+            }
+            if(KUDA == 1){
+            location.href="https://github.com/SteinweR/SteinweR.github.io";
+            }
+            if(KUDA == 2){
+            location.href="https://github.com/SteinweR/SteinweR.github.io";
+            }
         }
 
         function ImgAnimations(OBJid,TYPE,OBJTXT,ANDROID,fallback){
@@ -218,23 +231,25 @@
          }
 
          ReduceAllText();
-
-
+         
          if(xAndroid == true){
             document.getElementById("FirstGame").style.left = "10px"
-            document.getElementById("FirstGame").style.top = "80px";
+            document.getElementById("FirstGame").style.top = "110px";
             document.getElementById("FirstGame").style.height = "320px"; 
             document.getElementById("FirstGame").style.width = "320px";
 
             document.getElementById("TwoGame").style.left = "10px"
-            document.getElementById("TwoGame").style.top = "440px";
+            document.getElementById("TwoGame").style.top = "470px";
             document.getElementById("TwoGame").style.height = "320px"; 
             document.getElementById("TwoGame").style.width = "320px";
 
             document.getElementById("ThreeGame").style.left = "10px"
-            document.getElementById("ThreeGame").style.top = "800px";
+            document.getElementById("ThreeGame").style.top = "830px";
             document.getElementById("ThreeGame").style.height = "320px"; 
             document.getElementById("ThreeGame").style.width = "320px";
+
+            document.getElementById("GameLineTwo").style.top = "1185px";
+            document.getElementById("GameFone").style.height = "1100px";
 
 
 
