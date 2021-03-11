@@ -12,8 +12,17 @@
 
 <body style="height: 8000px;" bgcolor="#fff1dc">
 
-  
-<!--Сайт был разработан Бабиковом В.В 2021г.-->
+
+    
+
+    <h4 id="TextOne" style="font-size: 20px; text-align: center; position: absolute; top: 70px; left: 12%; overflow: hidden; max-width: 400px; max-height: 100%;">
+        12dadadadadadadadadadada3
+        dadadad
+        dadadada
+        dadadada
+        adaa21r</h4>
+
+ <!--Сайт был разработан Бабиковом В.В 2021г.-->
 
     
     <div id="LINE" style="position: absolute; left: 100%; top: 0px; transform: translate(-100%); width: 100%; height: 55px; background: #ffe3b9; border-width:9px; border-color: #ffd493; border-style: solid;"></div>
@@ -23,13 +32,14 @@
     <div id="MoreTwo" style="position: absolute; left: 80%; top: 30px; width: 36px; height: 6px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
     <div id="MoreThree" style="position: absolute; left: 80%; top: 45px; width: 36px; height: 6px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
     
-    <h1 id="heading" style="font-size: 30px; position: absolute; left: 25%; top: -5px; transform: translate(-20%);">Главная страница / ИНФО</h1>
+    <h1 id="heading" style="font-size: 30px; position: absolute; left: 25%; top: -5px; transform: translate(-20%);">Главная страница / Мои проекты / ИНФО</h1>
 
     <div hidden onclick="ClickOnMore(0);" id="ClickBlockOpen" style="position: absolute; left: 80%; top: 15px; width: 42px; height: 45px; background: #000000; opacity: 0;"></div>
     <div hidden onclick="ClickOnMore(1);" id="ClickBlockClose" style="position: absolute; left: 80%; top: 15px; width: 42px; height: 45px; background: #000000; opacity: 0;"></div>
     
-    <div hidden id="LeftBorder" class="LeftBorder"></div>
-    <div hidden id="RightBorder" class="RightBorder"></div>
+    <div onmouseover="ImgAnimations(0);" style="position: absolute; left: 100px; top: 400px; width: 36px; height: 60px; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
+    <!--<div hidden id="LeftBorder" class="LeftBorder"></div>
+    <div hidden id="RightBorder" class="RightBorder"></div>-->
 
     <h3></h3>
 
@@ -37,8 +47,12 @@
     
    
     
-    
+
     <script>
+
+        function ImgAnimations(num){
+        alert(0);
+        }
         document.getElementById("ClickBlockOpen").hidden = false;
         document.getElementById("ClickBlockClose").hidden = true;
         
@@ -49,7 +63,7 @@
         function UpdateLine(resim){
 
             if(resim == 0){
-            countOne = countOne + 1;
+            countOne = countOne + 3;
         document.getElementById("LINE").style.height = countOne + "px";
         if(countOne >= 200){
             clearInterval(idUpdateLINE);
@@ -59,7 +73,7 @@
         }
         
         if(resim == 1){
-        countTwo = countTwo - 1;
+        countTwo = countTwo - 3;
         document.getElementById("LINE").style.height = countTwo + "px";
         if(countTwo <= 55){
             clearInterval(idUpdateLINE);
@@ -95,37 +109,6 @@
         document.getElementById(OBJ).style.top = y + "px";
         }
 
-
-        function CheckX(){
-
-
-            x =  window.innerWidth;
-            if(xWindows == true){
-            if(x <= 1324){
-            document.getElementById("LeftBorder").hidden = true;
-            document.getElementById("RightBorder").hidden = true;
-            } else {
-            document.getElementById("LeftBorder").hidden = false;
-            document.getElementById("RightBorder").hidden = false;
-            }
-            }  
-
-        }
-        
-        
-
-        setInterval("CheckY('LINE',0)",1);
-        setInterval("CheckY('outLINE',65)",1);
-        setInterval("CheckY('MoreOne',15)",1);
-        setInterval("CheckY('MoreTwo',30)",1);
-        setInterval("CheckY('MoreThree',45)",1);
-        setInterval("CheckY('ClickBlockOpen',15)",1);
-        setInterval("CheckY('ClickBlockClose',15)",1);
-        setInterval("CheckY('heading',-5)",1);
-        setInterval(CheckX,1);
-        
-        
-
         function runToSite(KUDA){
             location.href="https://github.com/SteinweR/SteinweR.github.io";
         }
@@ -145,33 +128,46 @@
            //alert("Ваше устройство — телефон");
             xAndroid = true;
             Find = 1;
-            document.getElementById("LeftBorder").hidden = true;
-            document.getElementById("RightBorder").hidden = true;
-
            } 
 
         if(findWindows != -1){
            //alert("Ваше устройство - ПК");
             xWindows = true;
-            Find = 1;
-            document.getElementById("LeftBorder").hidden = false;
-            document.getElementById("RightBorder").hidden = false;
-                
+            Find = 1;  
            }
 
         if(Find == 0){
          alert("Устройство не определенно");
          }
 
-
+         
          function ReduceAllText(){
-            if(xAndroid == true){
+            var x = window.innerWidth;
+            if( x < 1000){
             document.getElementById("heading").style.fontSize = "20px";
+            document.getElementById("TextOne").style.fontSize = "13px";
             }
-
+            if( x > 1100){
+            document.getElementById("heading").style.fontSize = "30px";
+            document.getElementById("TextOne").style.fontSize = "20px";
+            }
          }
 
          ReduceAllText();
+
+
+
+        setInterval(ReduceAllText,200);
+        setInterval("CheckY('LINE',0)",50);
+        setInterval("CheckY('outLINE',65)",50);
+        setInterval("CheckY('MoreOne',15)",50);
+        setInterval("CheckY('MoreTwo',30)",50);
+        setInterval("CheckY('MoreThree',45)",50);
+        setInterval("CheckY('ClickBlockOpen',15)",50);
+        setInterval("CheckY('ClickBlockClose',15)",50);
+        setInterval("CheckY('heading',-5)",50);
+        
+
 
 
     </script>
