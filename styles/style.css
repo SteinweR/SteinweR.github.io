@@ -1,6 +1,9 @@
 h1 {
     text-align: center;
 }
+h4 {
+    text-align: center;
+}
 .LeftBorder {
     position: absolute;
     left: 0%;
@@ -12,8 +15,6 @@ h1 {
     border-width:9px;
     border-color: #292929;
     border-style: solid;
-
- 
 
 } 
 .RightBorder {
@@ -27,9 +28,6 @@ h1 {
     border-width:9px;
     border-color: #292929;
     border-style: solid;
-    
- 
-
 }
 
 
