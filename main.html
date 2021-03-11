@@ -23,7 +23,14 @@
         adaa21r</h4>-->
 
  <!--Сайт был разработан Бабиковом В.В 2021г.-->
+    <img id="FirstGame" onclick="runToSite(0);" onmouseout="ImgAnimations('FirstGame',1,'FirstGameTXT',0);" onmouseover="ImgAnimations('FirstGame',0,'FirstGameTXT',0);" src="https://img2.fonwall.ru/o/vb/landscape-nature-river.jpg" style=" border-width:10px; border-color: #ffb94f; border-style: outset; position: absolute; left: 0px; top: 80px; width: 360px; height: 360px;"/>
+     <h1 hidden id="FirstGameTXT" style="color: aquamarine; position: absolute; left: 0px; top: 0px;">Змейка</h1>
 
+     <img id="TwoGame" onclick="runToSite(0);" onmouseout="ImgAnimations('TwoGame',1,'TwoGameTXT',0);" onmouseover="ImgAnimations('TwoGame',0,'TwoGameTXT',0);" src="https://img2.fonwall.ru/o/vb/landscape-nature-river.jpg" style=" border-width:10px; border-color: #ffb94f; border-style: outset; position: absolute; left: 400px; top: 80px; width: 360px; height: 360px;"/>
+     <h1 hidden id="TwoGameTXT" style="color: #d17d00; position: absolute; left: 0px; top: 0px;">Кликер</h1>
+    
+     <img id="ThreeGame" onclick="runToSite(0);" onmouseout="ImgAnimations('ThreeGame',1,'ThreeGameTXT',0,30);" onmouseover="ImgAnimations('ThreeGame',0,'ThreeGameTXT',0,30);" src="https://img2.fonwall.ru/o/vb/landscape-nature-river.jpg" style=" border-width:10px; border-color: #ffb94f; border-style: outset; position: absolute; left: 800px; top: 80px; width: 360px; height: 360px;"/>
+     <h1 hidden id="ThreeGameTXT" style="color: #66d41c; position: absolute; left: 0px; top: 0px;">Платформер</h1>
     
     <div id="LINE" style="position: absolute; left: 100%; top: 0px; transform: translate(-100%); width: 100%; height: 55px; background: #ffe3b9; border-width:9px; border-color: #ffd493; border-style: solid;"></div>
     <div id="outLINE" style="position: absolute; left: 100%; top: 70px; transform: translate(-100%); width: 100%; height: 6px; background: #ffd493;"></div>
@@ -32,15 +39,11 @@
     <div id="MoreTwo" style="position: absolute; left: 80%; top: 30px; width: 36px; height: 6px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
     <div id="MoreThree" style="position: absolute; left: 80%; top: 45px; width: 36px; height: 6px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
     
-    <h1 id="heading" style="font-size: 30px; position: absolute; left: 22%; top: -5px; transform: translate(-20%);">Главная страница / Мои проекты / ИНФО</h1>
+    <h1 id="heading" style="font-size: 30px; position: absolute; left: 20%; top: -5px; transform: translate(-20%);">Главная страница / Мои проекты / ИНФО</h1>
 
     <div hidden onclick="ClickOnMore(0);" id="ClickBlockOpen" style="position: absolute; left: 80%; top: 15px; width: 42px; height: 45px; background: #000000; opacity: 0;"></div>
     <div hidden onclick="ClickOnMore(1);" id="ClickBlockClose" style="position: absolute; left: 80%; top: 15px; width: 42px; height: 45px; background: #000000; opacity: 0;"></div>
     
-       
-        <img id="FirstGame" onclick="runToSite(0);" onmouseout="ImgAnimations('FirstGame',1,'FirstGameTXT',0);" onmouseover="ImgAnimations('FirstGame',0,'FirstGameTXT',0);" src="https://img2.fonwall.ru/o/vb/landscape-nature-river.jpg" style=" border-width:10px; border-color: #ffb94f; border-style: solid; position: absolute; left: 100px; top: 400px; width: 360px; height: 360px;"/>
-        <h1 hidden id="FirstGameTXT" style="color: aquamarine; position: absolute; left: 0px; top: 0px;">Змейка</h1>
-
     <!--<button onclick="runToSite(0);">НАЖМИ НА МЕНЯ</button>-->
     
    
@@ -53,7 +56,7 @@
             location.href="https://github.com/SteinweR/SteinweR.github.io";
         }
 
-        function ImgAnimations(OBJid,TYPE,OBJTXT,ANDROID){
+        function ImgAnimations(OBJid,TYPE,OBJTXT,ANDROID,fallback){
             
             
         var DATA = document.getElementById(OBJid).style.width;
@@ -82,9 +85,14 @@
 
         
         document.getElementById(OBJTXT).hidden = false;  
-        document.getElementById(OBJTXT).style.left = imgLeft + 135 + "px";
-        document.getElementById(OBJTXT).style.top = imgTop + imgHeight / 100 * 80  + "px";
-             
+        if(fallback > 1){
+        document.getElementById(OBJTXT).style.left = imgLeft + (135 - fallback) + "px";
+        } else {
+        document.getElementById(OBJTXT).style.left = imgLeft + 135 + "px";   
+        }
+        document.getElementById(OBJTXT).style.top = imgTop + imgHeight / 100 * 80 + "px";
+        document.getElementById(OBJTXT).style.top = imgTop + imgHeight / 100 * 80 + "px"; 
+    
     }
 
         if(TYPE == 1){  
@@ -213,6 +221,12 @@
 
          ReduceAllText();
 
+         if(xAndroid == true){
+
+
+
+
+         }
 
 
         setInterval(ReduceAllText,200);
