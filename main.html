@@ -189,8 +189,6 @@
         var Find = 0;
 
         if(findAndroid != -1){
-            ImgAnimations('FirstGame',0,'FirstGameTXT',1);
-            ImgAnimations('FirstGame',1,'FirstGameTXT',1);
            //alert("Ваше устройство — телефон");
             xAndroid = true;
             Find = 1;
@@ -222,8 +220,30 @@
          ReduceAllText();
 
          if(xAndroid == true){
+            document.getElementById("FirstGame").style.left = "0px"
+           //document.getElementById("FirstGame").style.top;
+            document.getElementById("FirstGame").style.height = "320px"; 
+            document.getElementById("FirstGame").style.width = "320px";
+
+            document.getElementById("TwoGame").style.left = "0px"
+            document.getElementById("TwoGame").style.top = "360px";
+            document.getElementById("TwoGame").style.height = "320px"; 
+            document.getElementById("TwoGame").style.width = "320px";
+
+            document.getElementById("ThreeGame").style.left = "0px"
+            document.getElementById("ThreeGame").style.top = "760px";
+            document.getElementById("ThreeGame").style.height = "320px"; 
+            document.getElementById("ThreeGame").style.width = "320px";
 
 
+
+
+            ImgAnimations('FirstGame',0,'FirstGameTXT',1);
+            ImgAnimations('FirstGame',1,'FirstGameTXT',1);
+            ImgAnimations('TwoGame',0,'TwoGameTXT',1);
+            ImgAnimations('TwoGame',1,'TwoGameTXT',1);
+            ImgAnimations('ThreeGame',0,'ThreeGameTXT',1);
+            ImgAnimations('ThreeGame',1,'ThreeGameTXT',1);
 
 
          }
