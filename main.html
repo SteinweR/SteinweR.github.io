@@ -36,10 +36,23 @@
     
      <img id="ThreeGame" onclick="runToSite(0);" onmouseout="ImgAnimations('ThreeGame',1,'ThreeGameTXT',0,30);" onmouseover="ImgAnimations('ThreeGame',0,'ThreeGameTXT',0,30);" src="https://img2.fonwall.ru/o/vb/landscape-nature-river.jpg" style=" border-width:10px; border-color: #ff9900; border-style: outset; position: absolute; left: 800px; top: 110px; width: 360px; height: 360px;"/>
      <h1 hidden id="ThreeGameTXT" style="color: #66d41c; position: absolute; left: 0px; top: 0px;">Платформер</h1>
+     
+    <div id="infoOne" style="position: absolute; left: 100%; top: 550px; transform: translate(-100%); width: 100%; height: 410px; background: #ffc56d;"></div>
+    <div id="infoTwo" style="position: absolute; left: 100%; top: 550px; transform: translate(-100%); width: 100%; height: 6px; background: #e49012;"></div>
+    <div id="infoThree" style="position: absolute; left: 100%; top: 605px; transform: translate(-100%); width: 100%; height: 6px; background: #e49012;"></div>
+    <div id="infoFour" style="position: absolute; left: 100%; top: 960px; transform: translate(-100%); width: 100%; height: 6px; background: #e49012;"></div>
+    <h1 id="info" style="font-size: 30px; position: absolute; left: 20%; top: 545px; transform: translate(-20%);">ИНФО</h1>
+    <h3 id="infoTXT" style="font-size: 20px; position: absolute; left: 15%; top: 590px; transform: translate(-20%);">Сайт создан для повышения опыта в web-разработке.  </h1>
     
+
+
     <div id="LINE" style="position: absolute; left: 100%; top: 0px; transform: translate(-100%); width: 100%; height: 55px; background: #ffe3b9; border-width:9px; border-color: #ffd493; border-style: solid;"></div>
     <div id="outLINE" style="position: absolute; left: 100%; top: 70px; transform: translate(-100%); width: 100%; height: 6px; background: #ffd493;"></div>
     
+    <a hidden id="HiperOne" href="https://steinwer.github.io/main.html" style="position: absolute; left: 10%; top: 90px; font-size: 20px;">Проекты</a>
+    <a hidden id="HiperTwo" href="https://steinwer.github.io/main.html" style="position: absolute; left: 20%; top: 90px; font-size: 20px;">Презентации</a>
+    <a hidden id="HiperThree" href="https://steinwer.github.io/main.html" style="position: absolute; left: 30%; top: 90px; font-size: 20px;">Автор : Бабиков Владимир</a>
+
     <div id="MoreOne" style="position: absolute; left: 80%; top: 15px; width: 36px; height: 6px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
     <div id="MoreTwo" style="position: absolute; left: 80%; top: 30px; width: 36px; height: 6px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
     <div id="MoreThree" style="position: absolute; left: 80%; top: 45px; width: 36px; height: 6px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
@@ -140,19 +153,21 @@
         var countTwo = 200;
 
         function UpdateLine(resim){
-
+            
             if(resim == 0){
-            countOne = countOne + 3;
+            countOne = countOne + 5;
         document.getElementById("LINE").style.height = countOne + "px";
         if(countOne >= 200){
             clearInterval(idUpdateLINE);
             countOne = 55;
             document.getElementById("ClickBlockClose").hidden = false;
+            MoreTXT(0);
         }
         }
         
         if(resim == 1){
-        countTwo = countTwo - 3;
+        MoreTXT(1);
+        countTwo = countTwo - 5;
         document.getElementById("LINE").style.height = countTwo + "px";
         if(countTwo <= 55){
             clearInterval(idUpdateLINE);
@@ -222,16 +237,45 @@
             var x = window.innerWidth;
             if( x < 1000){
             document.getElementById("heading").style.fontSize = "20px";
+            document.getElementById("HiperOne").style.fontSize = "14px";
+            document.getElementById("HiperTwo").style.fontSize = "14px";
+            document.getElementById("HiperThree").style.fontSize = "14px";
+            document.getElementById("info").style.fontSize = "20px";
+            document.getElementById("infoTXT").style.fontSize = "14px";
             //document.getElementById("TextOne").style.fontSize = "13px";
             }
             if( x > 1100){
             document.getElementById("heading").style.fontSize = "30px";
+            document.getElementById("HiperOne").style.fontSize = "20px";
+            document.getElementById("HiperTwo").style.fontSize = "20px";
+            document.getElementById("HiperThree").style.fontSize = "20px";
+            document.getElementById("info").style.fontSize = "30px";
+            document.getElementById("infoTXT").style.fontSize = "20px";
             //document.getElementById("TextOne").style.fontSize = "20px";
             }
          }
 
          ReduceAllText();
+
+
+         function MoreTXT(OpenClose){
+            if(OpenClose == 0){
+            document.getElementById("HiperOne").hidden = false;
+            document.getElementById("HiperTwo").hidden = false;
+            document.getElementById("HiperThree").hidden = false;
+            }
+            if(OpenClose == 1){
+            document.getElementById("HiperOne").hidden = true;
+            document.getElementById("HiperTwo").hidden = true;
+            document.getElementById("HiperThree").hidden = true;
+            }
+
+         }
          
+
+            
+
+         xAndroid = true;
          if(xAndroid == true){
             document.getElementById("FirstGame").style.left = "10px"
             document.getElementById("FirstGame").style.top = "110px";
@@ -250,6 +294,21 @@
 
             document.getElementById("GameLineTwo").style.top = "1185px";
             document.getElementById("GameFone").style.height = "1100px";
+
+            document.getElementById("HiperOne").style.left = "10%";
+            document.getElementById("HiperTwo").style.left = "10%";
+            document.getElementById("HiperThree").style.left = "10%";
+
+            document.getElementById("HiperOne").style.top = "90px";
+            document.getElementById("HiperTwo").style.top = "120px";
+            document.getElementById("HiperThree").style.top = "150px";
+
+            document.getElementById("infoOne").style.top = "1300px";
+            document.getElementById("infoTwo").style.top = "1300px";
+            document.getElementById("infoThree").style.top = "1360px";
+            document.getElementById("infoFour").style.top = "1705px";
+            document.getElementById("info").style.top = "1295px";
+            document.getElementById("infoTXT").style.top = "1355px";
 
 
 
