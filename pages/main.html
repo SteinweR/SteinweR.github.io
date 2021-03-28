@@ -8,6 +8,8 @@
 <body>
 <div id="ONE" style="position: absolute; left: 100px; top: 305px; width: 600px; height: 360px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
 <div id="TWO" style="position: absolute; left: 10px; top: 105px; width: 36px; height: 60px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div> 
+<div id="THREE" style="position: absolute; left: 10px; top: 500px; width: 36px; height: 60px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div> 
+
 
 <button style="position: absolute; left: 60px; top: 0px; width: 360px; height: 190px;" onmouseup="HEROmove(5)"></button>
 
@@ -197,6 +199,9 @@
 
         var intTouchX = 0;
         var intTouchY = 0;
+
+        var TRUEintTouchX = 0;
+        var TRUEintTouchY = 0;
         
 
         //Вторичный цикл M1X - M2X
@@ -209,6 +214,7 @@
         console.log("Касание блока по X было обнаруженно");
         }
         intTouchX = Xone;
+        TRUEintTouchX = WALLarrayW[Xone];
         continue;
         } else {
             Xone = Xone + 1;
@@ -244,6 +250,7 @@
         console.log("Касание блока по Y было обнаруженно");
         }
         intTouchY = Xone;
+        TRUEintTouchY = WALLarrayH[Xone];
         continue;
         } else {
             Xone = Xone + 1;
@@ -269,11 +276,11 @@
         
         //Если подтверженно касание по X и Y совершаем ACTIONTYPE
 
-        if(DEBUG == 1){}
+        if(DEBUG == 1){
         console.log("");
-        console.log("Х в точке : " + intTouchX);
-        console.log("Y в точке : " + intTouchY);
-        
+        console.log("Х в точке : " + intTouchX + " | " + TRUEintTouchX);
+        console.log("Y в точке : " + intTouchY + " | " + TRUEintTouchY);
+        }
 
 
         //Главный лог. блок
@@ -282,13 +289,21 @@
         
         if(ACTIONTYPE == 1){
 
+        //clearInterval(idFALL);
+
         var NowPosX = 0;
         var NowPosY = 0;
             
 
-        var FindSideW = WALLmaxW / 2 ;
-        var FindSideH = WALLmaxH / 2 ;
+        //var FindSideW = WALLmaxW / 2 ;
+        //var FindSideH = WALLmaxH / 2 ;
 
+        
+        var FindSideW = TRUEintTouchX / 2 ;
+        var FindSideH = TRUEintTouchY / 2 ;
+
+
+        if(intTouchY > 0){
         if(intTouchX > FindSideW){
         if(DEBUG == 1){
         console.log("Выталкнуть вправо");
@@ -310,8 +325,9 @@
         document.getElementById(HERO).style.left = NowPosX - 1 + "px";
 
         }
+        }
         
-        
+        if(intTouchX > 0){
         if(intTouchY < FindSideH){
         if(DEBUG == 1){
         console.log("Выталкнуть вверх");
@@ -330,7 +346,7 @@
         NowPosY = parseInt(DATA);
         document.getElementById(HERO).style.top = NowPosY + 1 + "px";
         }
-
+        }
 
 
 
@@ -402,10 +418,10 @@
     }
 
 
+    setInterval('HitboxLogicCreator("ONE","TWO",1,0)',300);
+    setInterval('HitboxLogicCreator("THREE","TWO",2,0)')
     
-    setInterval('HitboxLogicCreator("ONE","TWO",1,0)',100);
-    
-    //setInterval("HEROmoveLOGIC(2)",10);
+    var idFALL = setInterval("HEROmoveLOGIC(2)",500);
     
 
 
