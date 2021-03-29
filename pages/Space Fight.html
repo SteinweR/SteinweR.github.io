@@ -13,22 +13,20 @@
 <div id="" style="position: absolute; left: 10px; top: 105px; width: 36px; height: 60px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div> 
 
 
-<button style="position: absolute; left: 60px; top: 0px; width: 360px; height: 190px;" onmouseup="HEROmove(5)"></button>
+<button style="position: absolute; left: 0px; top: 500px; width: 385px; height: 100px;" onmouseup="HEROmove(5)"></button>
 
-<button style="position: absolute; left: 100px; top: 60px; width: 80px; height: 80px;" onmouseup="HEROmove(5)" onmousedown="HEROmove(3)">D</button>
+<button style="position: absolute; left: 20px; top: 510px; width: 80px; height: 80px;" onmouseup="HEROmove(5)" onmousedown="HEROmove(3)">D</button>
 
-<button style="position: absolute; left: 300px; top: 60px; width: 80px; height: 80px;" onmouseup="HEROmove(5)" onmousedown="HEROmove(4)">A</button>
+<button style="position: absolute; left: 290px; top: 510px; width: 80px; height: 80px;" onmouseup="HEROmove(5)" onmousedown="HEROmove(4)">A</button>
 
-<button style="position: absolute; left: 200px; top: 90px; width: 80px; height: 80px;" onmouseup="HEROmove(5)" onmousedown="HEROmove(2)">S</button>
-
-<button style="position: absolute; left: 200px; top: 0px; width: 80px; height: 80px;" onmouseup="HEROmove(5)" onmousedown="HEROmove(1)">W</button>
-
-
-
+<button style="position: absolute; left: 115px; top: 510px; width: 160px; height: 80px;" onmouseup="HEROmove(5)" onclick="NOLL()">ATTACK</button>
 
 
 
 <script>
+    function NOLL(){
+        alert("NAS");
+    }
 
 
 
@@ -404,7 +402,6 @@
     var idUP;
 
     function HEROmove(side){
-
         if(side == 1){
         idUP = setInterval("HEROmoveLOGIC(1)",10);
         }
