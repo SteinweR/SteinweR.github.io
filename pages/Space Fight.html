@@ -7,25 +7,25 @@
 
 
 <body>
-<div id="ONE" style="position: absolute; left: 100px; top: 305px; width: 60px; height: 36px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
-<img src="https://cdn.discordapp.com/attachments/679789003935187048/826043789910474773/New_Piskel.png" id="TWO" style="position: absolute; left: 10px; top: 105px; width: 72px; height: 120px;"/>
 
-<div id="" style="position: absolute; left: 10px; top: 105px; width: 36px; height: 60px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div> 
+<img src="https://cdn.discordapp.com/attachments/679789003935187048/826038300589817866/02.png" style="position: absolute; top: 0px; left: 0px; height: 420px; width: 385px;"/>    
+<div id="ONE" style="position: absolute; left: 10px; top: 5px; width: 60px; height: 36px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
+<img src="https://cdn.discordapp.com/attachments/679789003935187048/826043789910474773/New_Piskel.png" id="ROCKET" style="position: absolute; left: 160px; top: 270px; width: 52px; height: 100px;"/>
 
+<button style="position: absolute; left: 0px; top: 400px; width: 385px; height: 100px; color: darkgray; background-color: darkblue" onmouseup="HEROmove(5)"></button>
 
-<button style="position: absolute; left: 0px; top: 500px; width: 385px; height: 100px;" onmouseup="HEROmove(5)"></button>
+<button style="position: absolute; left: 10px; top: 410px; width: 80px; height: 80px; color: darkgray; background-color: darkblue;" onmouseup="HEROmove(5)" onmousedown="HEROmove(3)">D</button>
 
-<button style="position: absolute; left: 20px; top: 510px; width: 80px; height: 80px;" onmouseup="HEROmove(5)" onmousedown="HEROmove(3)">D</button>
+<button style="position: absolute; left: 280px; top: 410px; width: 80px; height: 80px; color: darkgray; background-color: darkblue;" onmouseup="HEROmove(5)" onmousedown="HEROmove(4)">A</button>
 
-<button style="position: absolute; left: 290px; top: 510px; width: 80px; height: 80px;" onmouseup="HEROmove(5)" onmousedown="HEROmove(4)">A</button>
-
-<button style="position: absolute; left: 115px; top: 510px; width: 160px; height: 80px;" onmouseup="HEROmove(5)" onclick="NOLL()">ATTACK</button>
+<button id="ATTACK" style="position: absolute; left: 105px; top: 410px; width: 160px; height: 80px; color: darkgray; background-color: darkblue;" onmouseup="HEROmove(5)" onfocus="NOLL()">ATTACK</button>
 
 
 
 <script>
+    var x = 0;
     function NOLL(){
-        alert("NAS");
+        document.getElementById("ATTACK").innerHTML = "ATTACK - " + x;
     }
 
 
@@ -375,24 +375,24 @@
         //3 - left
         //4 - right
     if(side == 1){
-    DATAmove = document.getElementById("TWO").style.top;
+    DATAmove = document.getElementById("ROCKET").style.top;
     var HERODATA = parseInt(DATAmove);
-    document.getElementById("TWO").style.top = HERODATA - 1 + "px";
+    document.getElementById("ROCKET").style.top = HERODATA - 1 + "px";
     }
     if(side == 2){
-    DATAmove = document.getElementById("TWO").style.top;
+    DATAmove = document.getElementById("ROCKET").style.top;
     var HERODATA = parseInt(DATAmove);
-    document.getElementById("TWO").style.top = HERODATA + 1 + "px";
+    document.getElementById("ROCKET").style.top = HERODATA + 1 + "px";
     }
     if(side == 3){
-    DATAmove = document.getElementById("TWO").style.left;
+    DATAmove = document.getElementById("ROCKET").style.left;
     var HERODATA = parseInt(DATAmove);
-    document.getElementById("TWO").style.left = HERODATA - 1 + "px";
+    document.getElementById("ROCKET").style.left = HERODATA - 1 + "px";
     }
     if(side == 4){
-    DATAmove = document.getElementById("TWO").style.left;
+    DATAmove = document.getElementById("ROCKET").style.left;
     var HERODATA = parseInt(DATAmove);
-    document.getElementById("TWO").style.left = HERODATA + 1 + "px";
+    document.getElementById("ROCKET").style.left = HERODATA + 1 + "px";
     }
     }
 
@@ -424,7 +424,7 @@
     }
 
 
-    setInterval('HitboxLogicCreator("ONE","TWO",2,0)');
+    setInterval('HitboxLogicCreator("ONE","ROCKET",2,0)');
     //setInterval('HitboxLogicCreator("THREE","TWO",2,0)')
     
     //var idFALL = setInterval("HEROmoveLOGIC(2)",500);
