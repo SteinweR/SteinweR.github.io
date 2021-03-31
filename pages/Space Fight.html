@@ -7,19 +7,22 @@
 
 
 <body>
+    
+<div id="ROCKthree" style="position: absolute; left: -100px; top: -50px; width: 36px; height: 36px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
+<div id="ROCKtwo" style="position: absolute; left: -100px; top: -50px; width: 36px; height: 36px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
+<div id="ROCKone" style="position: absolute; left: -100px; top: -50px; width: 36px; height: 36px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
 
-<div id="ONE" style="position: absolute; left: 10px; top: 5px; width: 60px; height: 36px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
-<img src="https://cdn.discordapp.com/attachments/679789003935187048/826043789910474773/New_Piskel.png" id="ROCKET" style="position: absolute; left: 155px; top: 310px; width: 52px; height: 100px;"/>
+<img src="https://cdn.discordapp.com/attachments/679789003935187048/826043789910474773/New_Piskel.png" id="ROCKET" style="position: absolute; left: 160px; top: 345px; width: 52px; height: 100px;"/>
 
-<button style="position: absolute; left: 0px; top: 460px; width: 360px; height: 100px; color: darkgray; background-color: darkblue" onmouseup="HEROmove(5)"></button>
+<button style="border: 5px inset #090085; position: absolute; left: 0px; top: 460px; width: 360px; height: 100px; color: darkgray; background-color: #0c00b4" onmouseup="HEROmove(5)"></button>
 
-<button style="position: absolute; left: 10px; top: 470px; width: 80px; height: 80px; color: darkgray; background-color: darkblue;" onclick="dBUTTON()">D</button>
+<button style="border: 2px inset darkblue;position: absolute; left: 10px; top: 470px; width: 80px; height: 80px; color: darkgray; background-color: darkblue;" onclick="dBUTTON()">D</button>
 
-<button style="position: absolute; left: 270px; top: 470px; width: 80px; height: 80px; color: darkgray; background-color: darkblue;" onclick="aBUTTON()">A</button>
+<button style="border: 2px inset darkblue;position: absolute; left: 270px; top: 470px; width: 80px; height: 80px; color: darkgray; background-color: darkblue;" onclick="aBUTTON()">A</button>
 
-<button id="ATTACK" style="position: absolute; left: 100px; top: 470px; width: 160px; height: 80px; color: darkgray; background-color: darkblue;" onclick="attackBUTTON()">ATTACK</button>
+<button id="ATTACK" style="border: 2px inset darkblue; position: absolute; left: 100px; top: 470px; width: 160px; height: 80px; color: darkgray; background-color: darkblue;" onclick="attackBUTTON()">ATTACK</button>
 
-<div id="ROCKETbulletOne" style="position: absolute; opacity: 0%; left: -100px; top: -100px; width: 6px; height: 36px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
+<img src="https://cdn.discordapp.com/attachments/640482358247555093/826721542012403752/01_1.png" id="ROCKETbulletOne" style="position: absolute; opacity: 0%; left: -100px; top: -100px; width: 12px; height: 36px;"/>
 
 
 
@@ -38,7 +41,7 @@
 
         var bulletLeft = parseInt(document.getElementById("ROCKET").style.left);
 
-        document.getElementById("ROCKETbulletOne").style.top = bulletTop - 20 + "px";
+        document.getElementById("ROCKETbulletOne").style.top = bulletTop + 20 + "px";
         document.getElementById("ROCKETbulletOne").style.left = bulletLeft + 20 + "px";
         }
 
@@ -86,7 +89,7 @@ var ROCKETpos = 0;
 
 function dBUTTON(){
 ROCKETpos = parseInt(document.getElementById("ROCKET").style.left);
-if(ROCKETpos > 30){    
+if(ROCKETpos > 35){    
 audio.src = 'https://cdn.discordapp.com/attachments/640482358247555093/826699704578080778/ROCKETmove.wav';
 audio.volume = 0.2;
 audio.autoplay = true;
@@ -107,7 +110,7 @@ document.getElementById("ROCKET").style.left = ROCKETpos + "px";
 }
 
 
-function MeteorPos(NUM,OBJMASSIV){
+function MeteorRandomPos(NUM,OBJMASSIV){
 var MassivRandomPos = [0];
 NUM = NUM - 1;
 while(NUM >= 0){
@@ -116,16 +119,35 @@ MassivRandomPos[NUM] = RandomPos;
 NUM = NUM - 1;
 }
 
-alert(MassivRandomPos);
-   
+//alert(MassivRandomPos);
+
+if(MassivRandomPos[0] == 1){
+document.getElementById(OBJMASSIV[0]).style.left = "35px";
+document.getElementById(OBJMASSIV[0]).style.top = "10px";
+}
+if(MassivRandomPos[1] == 1){
+document.getElementById(OBJMASSIV[1]).style.left = "160px";
+document.getElementById(OBJMASSIV[1]).style.top = "10px";
+}
+if(MassivRandomPos[2] == 1){
+document.getElementById(OBJMASSIV[2]).style.left = "285px";   
+document.getElementById(OBJMASSIV[2]).style.top = "10px"; 
+}  
     
 }
 
-    var MAS = ["ONE"];
-    MeteorPos(3,MAS);
+    var MAS = ["ROCKone","ROCKtwo","ROCKthree"];
+    MeteorRandomPos(3,MAS);
 
-    function HitboxLogicCreator(WALL,HERO,ACTIONTYPE,DEBUG){
-    
+    function HitboxLogicCreator(WALLS,HERO,ACTIONTYPE,DEBUG){
+
+
+
+    var endHLC = false;
+    var xHLC = 0;
+
+    while(endHLC == false){
+    var WALL = WALLS[xHLC];
     var DATA;
     
     //Получаем Мин-Мах ширину объекта(Стена)
@@ -378,11 +400,20 @@ alert(MassivRandomPos);
         if(WALLtouchX == true && WALLtouchY == true){
 
         if(ACTIONTYPE == 2){
-        alert("You die !")
+        audio.volume = 0.6;
+        audio.src = "https://cdn.discordapp.com/attachments/640482358247555093/826724895504990279/ROCKETdie_mp3cut.net.wav";
+        audio.autoplay = true;
 
 
 
 
+        }
+
+
+        if(ACTIONTYPE == 3){
+
+
+            document.getElementById(WALL).style.left = "-100px";
         }
 
         if(ACTIONTYPE == 1){
@@ -452,6 +483,18 @@ alert(MassivRandomPos);
 
         }
         }
+
+        xHLC = xHLC + 1;
+    if(xHLC > WALLS.length - 1){
+        endHLC = true;
+        continue;
+
+    }
+
+    }
+
+    
+
         //конец функции
     }
     
@@ -459,31 +502,45 @@ alert(MassivRandomPos);
     
 
     
-    function HEROmoveLOGIC(side){
+    function HEROmoveLOGIC(side,objs){
     var DATAmove;
+    var xMoveLogic = 0;
+    var endHEROmoveLOGIC = false;
+
+
+    while(endHEROmoveLOGIC == false){
+    
+    
         //1 - up
         //2 - down
         //3 - left
         //4 - right
     if(side == 1){
-    DATAmove = document.getElementById("ROCKET").style.top;
+    DATAmove = document.getElementById(objs[xMoveLogic]).style.top;
     var HERODATA = parseInt(DATAmove);
-    document.getElementById("ROCKET").style.top = HERODATA - 4 + "px";
+    document.getElementById(objs[xMoveLogic]).style.top = HERODATA - 2 + "px";
     }
     if(side == 2){
-    DATAmove = document.getElementById("ROCKET").style.top;
+    DATAmove = document.getElementById(objs[xMoveLogic]).style.top;
     var HERODATA = parseInt(DATAmove);
-    document.getElementById("ROCKET").style.top = HERODATA + 4 + "px";
+    document.getElementById(objs[xMoveLogic]).style.top = HERODATA + 2 + "px";
     }
     if(side == 3){
-    DATAmove = document.getElementById("ROCKET").style.left;
+    DATAmove = document.getElementById(objs[xMoveLogic]).style.left;
     var HERODATA = parseInt(DATAmove);
-    document.getElementById("ROCKET").style.left = HERODATA - 4 + "px";
+    document.getElementById(objs[xMoveLogic]).style.left = HERODATA - 2 + "px";
     }
     if(side == 4){
-    DATAmove = document.getElementById("ROCKET").style.left;
+    DATAmove = document.getElementById(objs[xMoveLogic]).style.left;
     var HERODATA = parseInt(DATAmove);
-    document.getElementById("ROCKET").style.left = HERODATA + 4 + "px";
+    document.getElementById(objs[xMoveLogic]).style.left = HERODATA + 2 + "px";
+    }
+    xMoveLogic = xMoveLogic + 1;
+    if(xMoveLogic > objs.length - 1){
+        endHEROmoveLOGIC = true;
+        continue;
+    }
+
     }
     }
 
@@ -492,18 +549,18 @@ alert(MassivRandomPos);
     var idDOWN;
     var idUP;
 
-    function HEROmove(side){
+    function HEROmove(side,objs){
         if(side == 1){
-        idUP = setInterval("HEROmoveLOGIC(1)",10);
+        idUP = setInterval(HEROmoveLOGIC(1,objs),10);
         }
         if(side == 2){
-        idDOWN = setInterval("HEROmoveLOGIC(2)",10);
+        idDOWN = setInterval(HEROmoveLOGIC(2,objs),10);
         }
         if(side == 3){
-        idLEFT = setInterval("HEROmoveLOGIC(3)",10);
+        idLEFT = setInterval(HEROmoveLOGIC(3,objs),10);
         }
         if(side == 4){
-        idRIGHT = setInterval("HEROmoveLOGIC(4)",10);
+        idRIGHT = setInterval(HEROmoveLOGIC(4,objs),10);
         }
 
         if(side == 5){
@@ -515,7 +572,15 @@ alert(MassivRandomPos);
     }
 
 
-    setInterval('HitboxLogicCreator("ONE","ROCKET",2,0)');	
+    setInterval('HitboxLogicCreator(MAS,"ROCKET",2,0)',100);
+
+    var idBREAKROCK = setInterval('HitboxLogicCreator(MAS,"ROCKETbulletOne",3,0)',100);
+    setInterval("HEROmoveLOGIC(2,MAS)",10)
+
+    //setInterval(HEROmove(2,MAS),100);
+
+
+
 
     
 
