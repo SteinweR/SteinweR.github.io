@@ -8,11 +8,14 @@
 
 <body>
     
-<div id="ROCKthree" style="position: absolute; left: -100px; top: -50px; width: 36px; height: 36px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
-<div id="ROCKtwo" style="position: absolute; left: -100px; top: -50px; width: 36px; height: 36px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
-<div id="ROCKone" style="position: absolute; left: -100px; top: -50px; width: 36px; height: 36px; background: #ffc978; border-width:3px; border-color: #ffb94f; border-style: solid;"></div>
+
+<img src="https://cdn.discordapp.com/attachments/640482358247555093/826721542012403752/01_1.png" id="ROCKETbulletOne" style="position: absolute; opacity: 0%; left: -100px; top: -100px; width: 12px; height: 36px;"/>
 
 <img src="https://cdn.discordapp.com/attachments/679789003935187048/826043789910474773/New_Piskel.png" id="ROCKET" style="position: absolute; left: 160px; top: 345px; width: 52px; height: 100px;"/>
+
+<img src="https://cdn.discordapp.com/attachments/669792150338404382/827050186525769818/New_Piskel_4.png" id="ROCKthree" style="position: absolute; left: -100px; top: -50px; width: 44px; height: 44px;"/>
+<img src="https://cdn.discordapp.com/attachments/669792150338404382/827050186525769818/New_Piskel_4.png" id="ROCKtwo" style="position: absolute; left: -100px; top: -50px; width: 44px; height: 44px;"/>
+<img src="https://cdn.discordapp.com/attachments/669792150338404382/827050186525769818/New_Piskel_4.png" id="ROCKone" style="position: absolute; left: -100px; top: -50px; width: 44px; height: 44px;"/>
 
 <button style="border: 5px inset #090085; position: absolute; left: 0px; top: 460px; width: 360px; height: 100px; color: darkgray; background-color: #0c00b4" onmouseup="HEROmove(5)"></button>
 
@@ -21,15 +24,15 @@
 <button style="border: 2px inset darkblue;position: absolute; left: 270px; top: 470px; width: 80px; height: 80px; color: darkgray; background-color: darkblue;" onclick="aBUTTON()">A</button>
 
 <button id="ATTACK" style="border: 2px inset darkblue; position: absolute; left: 100px; top: 470px; width: 160px; height: 80px; color: darkgray; background-color: darkblue;" onclick="attackBUTTON()">ATTACK</button>
-
-<img src="https://cdn.discordapp.com/attachments/640482358247555093/826721542012403752/01_1.png" id="ROCKETbulletOne" style="position: absolute; opacity: 0%; left: -100px; top: -100px; width: 12px; height: 36px;"/>
-
-
-
+ 
+<progress id="ROCKEThp" value="100" max="100" style="position: absolute; left: 0px; top: 460px; width: 360px; height: 10px; background-color: #b8b8b8;"></progress>
+<h1 style=" position: absolute; left: 0px; top: -10px; color: lightseagreen;">Очки : </h1>
+<h1 id="XP" style=" position: absolute; left: 110px; top: -10px; color: lightseagreen;">0</h1>
 
 <script>
 
-        var audio = new Audio();    
+        var audio = new Audio();
+        var audioTwo = new Audio();    
 
 
         
@@ -79,19 +82,40 @@
         document.getElementById("ROCKETbulletOne").style.opacity = xOPACITY + "%";
         clearInterval(idBULLETFLY);
         idBULLET = setInterval("bulletFollow()",10);
-        ATKx = 0;
+        AttackReload(1);
+        
+
         }
         }
 
 
+        var idRELOAD;
 
+        function AttackReload(num){
+
+            if(num == 1){
+                ATKx = 2;
+                idRELOAD = setTimeout("AttackReload(2)",5000);
+            }
+            if(num == 2){
+                ATKx = 0;
+                clearTimeout(idRELOAD);
+            }
+        }
+
+
+     
+      
+
+
+        
 var ROCKETpos = 0;
 
 function dBUTTON(){
 ROCKETpos = parseInt(document.getElementById("ROCKET").style.left);
 if(ROCKETpos > 35){    
 audio.src = 'https://cdn.discordapp.com/attachments/640482358247555093/826699704578080778/ROCKETmove.wav';
-audio.volume = 0.2;
+audio.volume = 0.4;
 audio.autoplay = true;
 ROCKETpos = ROCKETpos - 125;
 document.getElementById("ROCKET").style.left = ROCKETpos + "px";
@@ -102,7 +126,7 @@ function aBUTTON(){
 ROCKETpos = parseInt(document.getElementById("ROCKET").style.left);
 if(ROCKETpos < 280){
 audio.src = 'https://cdn.discordapp.com/attachments/640482358247555093/826699704578080778/ROCKETmove.wav';
-audio.volume = 0.2;
+audio.volume = 0.4;
 audio.autoplay = true;  
 ROCKETpos = ROCKETpos + 125;
 document.getElementById("ROCKET").style.left = ROCKETpos + "px";
@@ -111,15 +135,42 @@ document.getElementById("ROCKET").style.left = ROCKETpos + "px";
 
 
 function MeteorRandomPos(NUM,OBJMASSIV){
+var rezNUM = NUM;
+var endMRP = false;
+while(endMRP == false){
+var xGoodLVL = 0;
 var MassivRandomPos = [0];
 NUM = NUM - 1;
 while(NUM >= 0){
-var RandomPos = Math.floor(Math.random() * 2);
+var RandomPos = Math.floor(Math.random() * 3);
 MassivRandomPos[NUM] = RandomPos;
 NUM = NUM - 1;
 }
 
 //alert(MassivRandomPos);
+if(MassivRandomPos[0] == 0||MassivRandomPos[1] == 0||MassivRandomPos[2] == 0){
+} else {xGoodLVL=xGoodLVL+1;}
+if(MassivRandomPos[3] == 0||MassivRandomPos[4] == 0||MassivRandomPos[5] == 0){
+} else {xGoodLVL=xGoodLVL+1;}
+if(MassivRandomPos[6] == 0||MassivRandomPos[7] == 0||MassivRandomPos[8] == 0){
+} else {xGoodLVL=xGoodLVL+1;}
+if(MassivRandomPos[9] == 0||MassivRandomPos[10] == 0||MassivRandomPos[11] == 0){
+} else {xGoodLVL=xGoodLVL+1;}
+if(MassivRandomPos[12] == 0||MassivRandomPos[14] == 0||MassivRandomPos[14] == 0){
+} else {xGoodLVL=xGoodLVL+1;}
+
+//alert(xGoodLVL);
+
+if(xGoodLVL == 0 || xGoodLVL == 1){
+endMRP = true;
+//alert("Подходит");
+}
+if(xGoodLVL > 1){
+NUM = rezNUM;
+//alert("Неподходит");
+}
+
+}
 
 if(MassivRandomPos[0] == 1){
 document.getElementById(OBJMASSIV[0]).style.left = "35px";
@@ -133,11 +184,23 @@ if(MassivRandomPos[2] == 1){
 document.getElementById(OBJMASSIV[2]).style.left = "285px";   
 document.getElementById(OBJMASSIV[2]).style.top = "10px"; 
 }  
+if(MassivRandomPos[3] == 1){
+document.getElementById(OBJMASSIV[0]).style.left = "35px";
+document.getElementById(OBJMASSIV[0]).style.top = "10px";
+}
+if(MassivRandomPos[4] == 1){
+document.getElementById(OBJMASSIV[1]).style.left = "160px";
+document.getElementById(OBJMASSIV[1]).style.top = "10px";
+}
+if(MassivRandomPos[5] == 1){
+document.getElementById(OBJMASSIV[2]).style.left = "285px";   
+document.getElementById(OBJMASSIV[2]).style.top = "10px"; 
+}  
     
 }
 
     var MAS = ["ROCKone","ROCKtwo","ROCKthree"];
-    MeteorRandomPos(3,MAS);
+    MeteorRandomPos(15,MAS);
 
     function HitboxLogicCreator(WALLS,HERO,ACTIONTYPE,DEBUG){
 
@@ -400,9 +463,12 @@ document.getElementById(OBJMASSIV[2]).style.top = "10px";
         if(WALLtouchX == true && WALLtouchY == true){
 
         if(ACTIONTYPE == 2){
-        audio.volume = 0.6;
-        audio.src = "https://cdn.discordapp.com/attachments/640482358247555093/826724895504990279/ROCKETdie_mp3cut.net.wav";
-        audio.autoplay = true;
+        document.getElementById("ROCKEThp").value = parseInt(document.getElementById("ROCKEThp").value) - 10;
+        document.getElementById("XP").innerHTML = parseInt(document.getElementById("XP").innerHTML) - Math.floor(Math.random() * 31);
+        audioTwo.volume = 0.6;
+        audioTwo.src = "https://cdn.discordapp.com/attachments/640482358247555093/826724895504990279/ROCKETdie_mp3cut.net.wav";
+        audioTwo.autoplay = true;
+        document.getElementById(WALL).style.left = "-100px";
 
 
 
@@ -411,9 +477,17 @@ document.getElementById(OBJMASSIV[2]).style.top = "10px";
 
 
         if(ACTIONTYPE == 3){
-
-
-            document.getElementById(WALL).style.left = "-100px";
+        document.getElementById("XP").innerHTML = parseInt(document.getElementById("XP").innerHTML) + Math.floor(Math.random() * 101);
+        audioTwo.volume = 0.6;
+        audioTwo.src = "https://cdn.discordapp.com/attachments/640482358247555093/827048442572046346/ROCKbreak4.wav";
+        audioTwo.autoplay = true;
+        xOPACITY = 0;
+        document.getElementById("ROCKETbulletOne").style.opacity = xOPACITY + "%";
+        clearInterval(idBULLETFLY);
+        idBULLET = setInterval("bulletFollow()",10);
+        ATKx = 0;
+        document.getElementById(WALL).style.left = "-100px";
+        AttackReload(1);
         }
 
         if(ACTIONTYPE == 1){
@@ -574,10 +648,10 @@ document.getElementById(OBJMASSIV[2]).style.top = "10px";
 
     setInterval('HitboxLogicCreator(MAS,"ROCKET",2,0)',100);
 
-    var idBREAKROCK = setInterval('HitboxLogicCreator(MAS,"ROCKETbulletOne",3,0)',100);
+    var idBREAKROCK = setInterval('HitboxLogicCreator(MAS,"ROCKETbulletOne",3,0)',10);
     setInterval("HEROmoveLOGIC(2,MAS)",10)
 
-    //setInterval(HEROmove(2,MAS),100);
+    //setInterval(HEROmove(2,MAS),10);
 
 
 
