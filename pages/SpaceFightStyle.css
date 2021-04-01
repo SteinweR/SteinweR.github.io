@@ -1,10 +1,5 @@
 body {
     max-width: 500px;
     max-height: 700px;
-    background-image: url('https://cdn.discordapp.com/attachments/679789003935187048/826038300589817866/02.png');
-    background-repeat: repeat;
-    background-size: auto;
+    
 }
-@media screen and (max-width: 1280px){div.contentblock{width: 1200px;}}
-@media screen and (max-width: 1140px){div.contentblock{width: 1024px;}}
-@media screen and (max-width: 992px){div.contentblock{width: 970px;}}

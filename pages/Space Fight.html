@@ -8,7 +8,7 @@
 
 <body>
     
-
+<div style="position: absolute; left: 0px; top: 0px; width: 360px; height: 500px; background-image: url('https://cdn.discordapp.com/attachments/679789003935187048/826038300589817866/02.png'); background-repeat: repeat; background-size: 70px;" ></div>
 <img src="https://cdn.discordapp.com/attachments/640482358247555093/826721542012403752/01_1.png" id="ROCKETbulletOne" style="position: absolute; opacity: 0%; left: -100px; top: -100px; width: 12px; height: 36px;"/>
 
 <img src="https://cdn.discordapp.com/attachments/679789003935187048/826043789910474773/New_Piskel.png" id="ROCKET" style="position: absolute; left: 160px; top: 345px; width: 52px; height: 100px;"/>
@@ -16,6 +16,14 @@
 <img src="https://cdn.discordapp.com/attachments/669792150338404382/827050186525769818/New_Piskel_4.png" id="ROCKthree" style="position: absolute; left: -100px; top: -50px; width: 44px; height: 44px;"/>
 <img src="https://cdn.discordapp.com/attachments/669792150338404382/827050186525769818/New_Piskel_4.png" id="ROCKtwo" style="position: absolute; left: -100px; top: -50px; width: 44px; height: 44px;"/>
 <img src="https://cdn.discordapp.com/attachments/669792150338404382/827050186525769818/New_Piskel_4.png" id="ROCKone" style="position: absolute; left: -100px; top: -50px; width: 44px; height: 44px;"/>
+
+<img src="https://cdn.discordapp.com/attachments/669792150338404382/827050186525769818/New_Piskel_4.png" id="ROCKfour" style="position: absolute; left: -100px; top: -50px; width: 44px; height: 44px;"/>
+<img src="https://cdn.discordapp.com/attachments/669792150338404382/827050186525769818/New_Piskel_4.png" id="ROCKfive" style="position: absolute; left: -100px; top: -50px; width: 44px; height: 44px;"/>
+<img src="https://cdn.discordapp.com/attachments/669792150338404382/827050186525769818/New_Piskel_4.png" id="ROCKsix" style="position: absolute; left: -100px; top: -50px; width: 44px; height: 44px;"/>
+
+<img src="https://cdn.discordapp.com/attachments/669792150338404382/827050186525769818/New_Piskel_4.png" id="ROCKseven" style="position: absolute; left: -100px; top: -50px; width: 44px; height: 44px;"/>
+<img src="https://cdn.discordapp.com/attachments/669792150338404382/827050186525769818/New_Piskel_4.png" id="ROCKeight" style="position: absolute; left: -100px; top: -50px; width: 44px; height: 44px;"/>
+<img src="https://cdn.discordapp.com/attachments/669792150338404382/827050186525769818/New_Piskel_4.png" id="ROCKnine" style="position: absolute; left: -100px; top: -50px; width: 44px; height: 44px;"/>
 
 <button style="border: 5px inset #090085; position: absolute; left: 0px; top: 460px; width: 360px; height: 100px; color: darkgray; background-color: #0c00b4" onmouseup="HEROmove(5)"></button>
 
@@ -25,7 +33,7 @@
 
 <button id="ATTACK" style="border: 2px inset darkblue; position: absolute; left: 100px; top: 470px; width: 160px; height: 80px; color: darkgray; background-color: darkblue;" onclick="attackBUTTON()">ATTACK</button>
  
-<progress id="ROCKEThp" value="100" max="100" style="position: absolute; left: 0px; top: 460px; width: 360px; height: 10px; background-color: #b8b8b8;"></progress>
+<progress id="ROCKEThp" value="100" max="100" style="position: absolute; left: 0px; top: 455px; width: 360px; height: 10px; background-color: #b8b8b8;"></progress>
 <h1 style=" position: absolute; left: 0px; top: -10px; color: lightseagreen;">Очки : </h1>
 <h1 id="XP" style=" position: absolute; left: 110px; top: -10px; color: lightseagreen;">0</h1>
 
@@ -44,7 +52,8 @@
 
         var bulletLeft = parseInt(document.getElementById("ROCKET").style.left);
 
-        document.getElementById("ROCKETbulletOne").style.top = bulletTop + 20 + "px";
+        //document.getElementById("ROCKETbulletOne").style.top = bulletTop + 20 + "px";
+        document.getElementById("ROCKETbulletOne").style.top = bulletTop - 1000 + "px";
         document.getElementById("ROCKETbulletOne").style.left = bulletLeft + 20 + "px";
         }
 
@@ -57,6 +66,9 @@
         function attackBUTTON(){
         ATKx = ATKx + 1;
         if(ATKx == 1){
+        bulletTop = parseInt(document.getElementById("ROCKET").style.top);
+        document.getElementById("ROCKETbulletOne").style.top = bulletTop + 20 + "px";
+
         audio.volume = 0.7;
         audio.src = 'https://cdn.discordapp.com/attachments/640482358247555093/826697338138394655/BULLET.wav';
         audio.autoplay = true;
@@ -172,34 +184,47 @@ NUM = rezNUM;
 
 }
 
-if(MassivRandomPos[0] == 1){
+if(MassivRandomPos[0] >= 1){
 document.getElementById(OBJMASSIV[0]).style.left = "35px";
 document.getElementById(OBJMASSIV[0]).style.top = "10px";
 }
-if(MassivRandomPos[1] == 1){
+if(MassivRandomPos[1] >= 1){
 document.getElementById(OBJMASSIV[1]).style.left = "160px";
 document.getElementById(OBJMASSIV[1]).style.top = "10px";
 }
-if(MassivRandomPos[2] == 1){
+if(MassivRandomPos[2] >= 1){
 document.getElementById(OBJMASSIV[2]).style.left = "285px";   
 document.getElementById(OBJMASSIV[2]).style.top = "10px"; 
 }  
-if(MassivRandomPos[3] == 1){
-document.getElementById(OBJMASSIV[0]).style.left = "35px";
-document.getElementById(OBJMASSIV[0]).style.top = "10px";
+if(MassivRandomPos[3] >= 1){
+document.getElementById(OBJMASSIV[3]).style.left = "35px";
+document.getElementById(OBJMASSIV[3]).style.top = "-220px";
 }
-if(MassivRandomPos[4] == 1){
-document.getElementById(OBJMASSIV[1]).style.left = "160px";
-document.getElementById(OBJMASSIV[1]).style.top = "10px";
+if(MassivRandomPos[4] >= 1){
+document.getElementById(OBJMASSIV[4]).style.left = "160px";
+document.getElementById(OBJMASSIV[4]).style.top = "-220px";
 }
-if(MassivRandomPos[5] == 1){
-document.getElementById(OBJMASSIV[2]).style.left = "285px";   
-document.getElementById(OBJMASSIV[2]).style.top = "10px"; 
+if(MassivRandomPos[5] >= 1){
+document.getElementById(OBJMASSIV[5]).style.left = "285px";   
+document.getElementById(OBJMASSIV[5]).style.top = "-220px"; 
 }  
+if(MassivRandomPos[6] >= 1){
+document.getElementById(OBJMASSIV[6]).style.left = "35px";
+document.getElementById(OBJMASSIV[6]).style.top = "-430px";
+}
+if(MassivRandomPos[7] >= 1){
+document.getElementById(OBJMASSIV[7]).style.left = "160px";
+document.getElementById(OBJMASSIV[7]).style.top = "-430px";
+}
+if(MassivRandomPos[8] >= 1){
+document.getElementById(OBJMASSIV[8]).style.left = "285px";   
+document.getElementById(OBJMASSIV[8]).style.top = "-430px"; 
+}
+
     
 }
 
-    var MAS = ["ROCKone","ROCKtwo","ROCKthree"];
+    var MAS = ["ROCKone","ROCKtwo","ROCKthree","ROCKfour","ROCKfive","ROCKsix","ROCKseven","ROCKeight","ROCKnine"];
     MeteorRandomPos(15,MAS);
 
     function HitboxLogicCreator(WALLS,HERO,ACTIONTYPE,DEBUG){
@@ -463,7 +488,7 @@ document.getElementById(OBJMASSIV[2]).style.top = "10px";
         if(WALLtouchX == true && WALLtouchY == true){
 
         if(ACTIONTYPE == 2){
-        document.getElementById("ROCKEThp").value = parseInt(document.getElementById("ROCKEThp").value) - 10;
+        document.getElementById("ROCKEThp").value = parseInt(document.getElementById("ROCKEThp").value) - 20;
         document.getElementById("XP").innerHTML = parseInt(document.getElementById("XP").innerHTML) - Math.floor(Math.random() * 31);
         audioTwo.volume = 0.6;
         audioTwo.src = "https://cdn.discordapp.com/attachments/640482358247555093/826724895504990279/ROCKETdie_mp3cut.net.wav";
@@ -477,7 +502,7 @@ document.getElementById(OBJMASSIV[2]).style.top = "10px";
 
 
         if(ACTIONTYPE == 3){
-        document.getElementById("XP").innerHTML = parseInt(document.getElementById("XP").innerHTML) + Math.floor(Math.random() * 101);
+        document.getElementById("XP").innerHTML = parseInt(document.getElementById("XP").innerHTML) + Math.floor(Math.random() * 61);
         audioTwo.volume = 0.6;
         audioTwo.src = "https://cdn.discordapp.com/attachments/640482358247555093/827048442572046346/ROCKbreak4.wav";
         audioTwo.autoplay = true;
@@ -653,8 +678,11 @@ document.getElementById(OBJMASSIV[2]).style.top = "10px";
 
     //setInterval(HEROmove(2,MAS),10);
 
-
-
+/*
+@media screen and (max-width: 1280px){div.contentblock{width: 1200px;}}
+@media screen and (max-width: 1140px){div.contentblock{width: 1024px;}}
+@media screen and (max-width: 992px){div.contentblock{width: 970px;}}
+*/
 
     
 
