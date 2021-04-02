@@ -33,20 +33,76 @@
 
 <button id="ATTACK" style="border: 2px inset darkblue; position: absolute; left: 100px; top: 470px; width: 160px; height: 80px; color: darkgray; background-color: darkblue;" onclick="attackBUTTON()">ATTACK</button>
  
-<progress id="ROCKEThp" value="100" max="100" style="position: absolute; left: 0px; top: 455px; width: 360px; height: 10px; background-color: #b8b8b8;"></progress>
+<progress id="ROCKEThp" value="10000" max="10000" style="position: absolute; left: 0px; top: 455px; width: 360px; height: 10px; background-color: #b8b8b8;"></progress>
 <h1 style=" position: absolute; left: 0px; top: -10px; color: lightseagreen;">Очки : </h1>
 <h1 id="XP" style=" position: absolute; left: 110px; top: -10px; color: lightseagreen;">0</h1>
 
-<script>
+<div hidden id="FONE" style=" opacity: 90%; position: absolute; left: 0px; top: 0px; width: 360px; height: 560px; background-color: #000000;" ></div>
+<progress hidden id="load" value="0" max="14" style=" opacity: 90%; position: absolute; left: 15px; top: 300px; width: 330px; height: 10px; background-color: #b8b8b8;"></progress>
 
+<div id="MeteorCheckLine" style="position: absolute; left: -140px; top: 530px; width: 500px; height: 20px; background-color: #000000;"></div>
+<script>
+document.getElementById("FONE").hidden = false;
+document.getElementById("load").hidden = false;
+        
+
+        
+        
         var audio = new Audio();
         var audioTwo = new Audio();    
 
+audio.volume = 0.0;
+Load();
+audioTwo.volume = 0.0;
+Load();
+audio.src = 'https://cdn.discordapp.com/attachments/640482358247555093/826697338138394655/BULLET.wav';
+Load();
+audio.autoplay = true;
+Load();
+audio.src = 'https://cdn.discordapp.com/attachments/640482358247555093/826699704578080778/ROCKETmove.wav';
+Load();
+audio.autoplay = true;
+Load();
+audioTwo.src = "https://cdn.discordapp.com/attachments/640482358247555093/826724895504990279/ROCKETdie_mp3cut.net.wav";
+Load();
+audioTwo.autoplay = true;
+Load();
+audioTwo.src = "https://cdn.discordapp.com/attachments/640482358247555093/827048442572046346/ROCKbreak4.wav";
+Load();
+audioTwo.autoplay = true;
+Load();
+aBUTTON();
+Load();
+dBUTTON();
+Load();
+attackBUTTON();
+Load();
+AttackReload(3);
+Load();
+var idDISABLELOAD = setInterval("disableLoad()",10);
+var idROCKETDIE;
+var idCHECKMETEORS;
 
-        
-        
-        
-        
+
+function disableLoad(){
+
+if(document.getElementById("load").style.opacity >= 0.01){
+document.getElementById("FONE").style.opacity = document.getElementById("FONE").style.opacity - 0.01;
+document.getElementById("load").style.opacity = document.getElementById("load").style.opacity - 0.01;
+} 
+if(document.getElementById("load").style.opacity <= 0.00){
+document.getElementById("load").hidden = true;
+document.getElementById("FONE").hidden = true;
+clearInterval(idDISABLELOAD);
+setInterval("HEROmoveLOGIC(2,MAS)",10);
+}
+
+}
+        function Load(){
+document.getElementById("load").value = parseInt(document.getElementById("load").value) + 1;
+
+
+}
         function bulletFollow(){
         var bulletTop = parseInt(document.getElementById("ROCKET").style.top);
 
@@ -113,6 +169,9 @@
                 ATKx = 0;
                 clearTimeout(idRELOAD);
             }
+if(num == 3){
+idRELOAD = setTimeout("AttackReload(2)",100);
+}
         }
 
 
@@ -145,41 +204,54 @@ document.getElementById("ROCKET").style.left = ROCKETpos + "px";
 }
 }
 
+var MassivRandomPos = [0];
+var lastMassivNum = 9;
+var xNum = 0;
 
-function MeteorRandomPos(NUM,OBJMASSIV){
+function MeteorRandomPos(NUM,OBJMASSIV,type){
+
+
+if(type == 1){
 var rezNUM = NUM;
 var endMRP = false;
+var xGC = 0;
+if(type == 1){
 while(endMRP == false){
+MassivRandomPos = [0];
 var xGoodLVL = 0;
-var MassivRandomPos = [0];
 NUM = NUM - 1;
 while(NUM >= 0){
-var RandomPos = Math.floor(Math.random() * 3);
+RandomPos = Math.floor(Math.random() * 3);
 MassivRandomPos[NUM] = RandomPos;
 NUM = NUM - 1;
 }
 
 //alert(MassivRandomPos);
-if(MassivRandomPos[0] == 0||MassivRandomPos[1] == 0||MassivRandomPos[2] == 0){
+var endMassivCheck = false;
+while(endMassivCheck == false){
+if(MassivRandomPos[xGC + 0] == 0||MassivRandomPos[xGC + 1] == 0||MassivRandomPos[xGC + 2] == 0){
+//console.log(MassivRandomPos[xGC + 0] + " " + MassivRandomPos[xGC + 1] + " " +MassivRandomPos[xGC + 2] + " |");
 } else {xGoodLVL=xGoodLVL+1;}
-if(MassivRandomPos[3] == 0||MassivRandomPos[4] == 0||MassivRandomPos[5] == 0){
-} else {xGoodLVL=xGoodLVL+1;}
-if(MassivRandomPos[6] == 0||MassivRandomPos[7] == 0||MassivRandomPos[8] == 0){
-} else {xGoodLVL=xGoodLVL+1;}
-if(MassivRandomPos[9] == 0||MassivRandomPos[10] == 0||MassivRandomPos[11] == 0){
-} else {xGoodLVL=xGoodLVL+1;}
-if(MassivRandomPos[12] == 0||MassivRandomPos[14] == 0||MassivRandomPos[14] == 0){
-} else {xGoodLVL=xGoodLVL+1;}
+xGC = xGC + 3;
+if(xGC >= MassivRandomPos.length + 3){
+endMassivCheck = true;
+}
+
+}
 
 //alert(xGoodLVL);
 
 if(xGoodLVL == 0 || xGoodLVL == 1){
 endMRP = true;
-//alert("Подходит");
+console.log("Подходит " + xGoodLVL);
+
+
 }
 if(xGoodLVL > 1){
 NUM = rezNUM;
-//alert("Неподходит");
+console.log("Неподходит" + xGoodLVL);
+}
+
 }
 
 }
@@ -220,12 +292,113 @@ if(MassivRandomPos[8] >= 1){
 document.getElementById(OBJMASSIV[8]).style.left = "285px";   
 document.getElementById(OBJMASSIV[8]).style.top = "-430px"; 
 }
+}
+
+
+
+//alert(xNum);
+if(type == 2){
+//alert(MassivRandomPos);
+var TeleportChech = false;
+
+if(xNum == 0){
+
+    if(MassivRandomPos[lastMassivNum + 0] >= 1){
+document.getElementById(OBJMASSIV[0]).style.left = "35px";
+document.getElementById(OBJMASSIV[0]).style.top = "-430px";
+}
+if(MassivRandomPos[lastMassivNum + 1] >= 1){
+document.getElementById(OBJMASSIV[1]).style.left = "160px";
+document.getElementById(OBJMASSIV[1]).style.top = "-430px";
+}
+if(MassivRandomPos[lastMassivNum + 2] >= 1){
+document.getElementById(OBJMASSIV[2]).style.left = "285px";   
+document.getElementById(OBJMASSIV[2]).style.top = "-430px"; 
+}
+TeleportChech = true;
+}
+
+if(xNum == 1){
+
+if(MassivRandomPos[lastMassivNum + 3] >= 1){
+document.getElementById(OBJMASSIV[3]).style.left = "35px";
+document.getElementById(OBJMASSIV[3]).style.top = "-220px";
+}
+if(MassivRandomPos[lastMassivNum + 4] >= 1){
+document.getElementById(OBJMASSIV[4]).style.left = "160px";
+document.getElementById(OBJMASSIV[4]).style.top = "-220px";
+}
+if(MassivRandomPos[lastMassivNum + 5] >= 1){
+document.getElementById(OBJMASSIV[5]).style.left = "285px";   
+document.getElementById(OBJMASSIV[5]).style.top = "-220px"; 
+}
+TeleportChech = true;
+}
+
+if(xNum == 2){
+if(MassivRandomPos[lastMassivNum + 6] >= 1){
+document.getElementById(OBJMASSIV[6]).style.left = "35px";
+document.getElementById(OBJMASSIV[6]).style.top = "10px";
+}
+if(MassivRandomPos[lastMassivNum + 7] >= 1){
+document.getElementById(OBJMASSIV[7]).style.left = "160px";
+document.getElementById(OBJMASSIV[7]).style.top = "10px";
+}
+if(MassivRandomPos[lastMassivNum + 8] >= 1){
+document.getElementById(OBJMASSIV[8]).style.left = "285px";   
+document.getElementById(OBJMASSIV[8]).style.top = "10px"; 
+}
+TeleportChech = true;
+}
+
+if(TeleportChech == true){
+    lastMassivNum = lastMassivNum + 3;
+    xNum = xNum + 1;
+}
+if(xNum == 3){
+    xNum = 0;
+}
+
+idCHECKMETEORS = setInterval("CheckMeteors(MAS)");
+
+
+
+}
 
     
 }
 
     var MAS = ["ROCKone","ROCKtwo","ROCKthree","ROCKfour","ROCKfive","ROCKsix","ROCKseven","ROCKeight","ROCKnine"];
-    MeteorRandomPos(15,MAS);
+    MeteorRandomPos(999,MAS,1);
+
+
+
+    var idDIESCREEN;
+    function ROCKETdie(){
+    clearTimeout(idROCKETDIE);
+    DieScreen(1);
+    idDIESCREEN = setInterval("DieScreen(2)",10);
+    
+
+    }
+
+    var DieScreenOpacity = 0.00;
+    function DieScreen(act){
+    if(act == 1){
+    document.getElementById("FONE").hidden = false;
+    }
+    if(act == 2){
+    if(document.getElementById("FONE").style.opacity == 1.0){
+        clearInterval(idDIESCREEN);
+    }
+    DieScreenOpacity = DieScreenOpacity + 0.01;
+    document.getElementById("FONE").style.opacity = DieScreenOpacity;
+    }
+    }
+
+
+
+
 
     function HitboxLogicCreator(WALLS,HERO,ACTIONTYPE,DEBUG){
 
@@ -494,6 +667,9 @@ document.getElementById(OBJMASSIV[8]).style.top = "-430px";
         audioTwo.src = "https://cdn.discordapp.com/attachments/640482358247555093/826724895504990279/ROCKETdie_mp3cut.net.wav";
         audioTwo.autoplay = true;
         document.getElementById(WALL).style.left = "-100px";
+        if(document.getElementById("ROCKEThp").value <= 0){
+           idROCKETDIE = setTimeout("ROCKETdie()",300);
+        }
 
 
 
@@ -514,6 +690,7 @@ document.getElementById(OBJMASSIV[8]).style.top = "-430px";
         document.getElementById(WALL).style.left = "-100px";
         AttackReload(1);
         }
+
 
         if(ACTIONTYPE == 1){
 
@@ -670,21 +847,36 @@ document.getElementById(OBJMASSIV[8]).style.top = "-430px";
         }
     }
 
+   
+
+    function CheckMeteors(OBJMASSIV){
+        if(parseInt(document.getElementById("ROCKone").style.top) >= 470 || parseInt(document.getElementById("ROCKtwo").style.top) >= 470 || parseInt(document.getElementById("ROCKthree").style.top) >= 470 ){
+            document.getElementById("ROCKone").style.top = "-1000px";
+            document.getElementById("ROCKtwo").style.top = "-1000px";
+            document.getElementById("ROCKthree").style.top = "-1000px";
+            clearInterval(idCHECKMETEORS);
+            MeteorRandomPos(0,MAS,2);
+        }
+
+        if(parseInt(document.getElementById("ROCKfour").style.top) >= 470 || parseInt(document.getElementById("ROCKfive").style.top) >= 470 || parseInt(document.getElementById("ROCKsix").style.top) >= 470 ){
+            document.getElementById("ROCKfour").style.top = "-1000px";
+            document.getElementById("ROCKfive").style.top = "-1000px";
+            document.getElementById("ROCKsix").style.top = "-1000px";
+            clearInterval(idCHECKMETEORS);
+            MeteorRandomPos(0,MAS,2);
+        }
+    }
 
     setInterval('HitboxLogicCreator(MAS,"ROCKET",2,0)',100);
 
     var idBREAKROCK = setInterval('HitboxLogicCreator(MAS,"ROCKETbulletOne",3,0)',10);
-    setInterval("HEROmoveLOGIC(2,MAS)",10)
+    idCHECKMETEORS = setInterval("CheckMeteors(MAS)");
+   
 
-    //setInterval(HEROmove(2,MAS),10);
-
-/*
-@media screen and (max-width: 1280px){div.contentblock{width: 1200px;}}
-@media screen and (max-width: 1140px){div.contentblock{width: 1024px;}}
-@media screen and (max-width: 992px){div.contentblock{width: 970px;}}
-*/
+    //setTimeout(() => {  MeteorRandomPos(9999,MAS,2); }, 5000);
 
     
+
 
 
 </script>
