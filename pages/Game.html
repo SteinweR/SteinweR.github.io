@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="styles/style.css"/>
+        <title>FinalGame</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+    </head>
+    
+    <body>
+        
+        <div id="StartPos" style="height: 1px; width: 1px;"></div>
+        
+        <div id="FONE" style="opacity: 0; width: 1150px  ; height: 990px ; background-color: black; position: absolute; left: -10px; top: -10px;"></div>
+        <progress id="HP" min="0" max="10" value="10" style="position: absolute; top: 30px; left: 650px; width: 400px; height: 140px;"></progress>
+        <progress id="mobHP" min="0" max="10" value="10" style="position: absolute; top: 30px; left: 60px; width: 400px; height: 140px;"></progress>
+      
+        <button id="up" onclick="PlaceMove(MainPlace,'up')" style="position: absolute; top: 540px; left: 100px; width: 80px; height: 50px;">up</button>
+        <button id="down" onclick="PlaceMove(MainPlace,'down')" style="position: absolute; top: 600px; left: 100px; width: 80px; height: 50px;">down</button>
+        <button id="right" onclick="PlaceMove(MainPlace,'right')" style="position: absolute; top: 600px; left: 190px; width: 80px; height: 50px;">right</button>
+        <button id="left" onclick="PlaceMove(MainPlace,'left')" style="position: absolute; top: 600px; left: 10px; width: 80px; height: 50px;">left</button>
+
+       
+       <script>
+           var debug = 0;
+           var NEWLOCATE = 1;
+           /*
+           2 - персонаж
+           1 - враг
+           0 - пол
+           3 - стена
+           4 - триггер
+           */   
+           
+          var MainPlace = [
+           [0,0,3,3,3,3,0,0,0,0,4],
+           [0,0,1,0,0,0,0,0,0,0,4],
+           [0,0,0,0,0,3,1,3,0,0,4],
+           [0,0,0,0,0,3,2,3,0,0,4],
+           [0,0,0,0,0,3,3,3,0,0,4]
+           ]
+
+        
+        
+        if(debug == 1){console.log("Схема позиций на матрице : 1 число - длинна(В линию) 2 число - инвертированная высота(Ряд) (Самый верх = 0)")}
+        function FindHero(matrics){
+        //Переменные позиции по ряду и относительно линии
+		let x = 0;
+		let xTwo = 0;
+        let end = false;
+        //Цикл проверяет все точки матрицы на CONST персонажа
+		while(end == false){
+	    if(matrics[xTwo][x] == 2){
+        //Удачно - позиция
+		if(debug == 1){console.log("Координаты персонажа : " + x + "," + xTwo);}
+		return([x,xTwo]);
+        }
+		x = x + 1;										
+        if(x >= matrics[0].length){
+        x = 0;
+		xTwo = xTwo + 1;
+        }						
+	    if(xTwo >= matrics.length){
+		end = true;
+		}}
+        }
+
+
+
+        function FindMonster(matrics){
+        //Переменные позиции по ряду и относительно линии
+		let x = 0;
+		let xTwo = 0;
+        let end = false;
+        let MonsterPosS = [];
+        let xM = 0;
+        //Цикл проверяет все точки матрицы на CONST врага
+		while(end == false){
+	    if(matrics[xTwo][x] == 1){
+        //Удачно - записываем позицию
+		MonsterPosS[xM + 0] = x;
+        MonsterPosS[xM + 1] = xTwo;
+        xM = xM + 2;
+        }
+		x = x + 1;										
+        if(x >= matrics[0].length){
+        x = 0;
+		xTwo = xTwo + 1;
+        }						
+	    if(xTwo >= matrics.length){
+		end = true;
+        if(debug == 1){console.log("Координаты врагов на матрице : " + MonsterPosS);}
+        return(MonsterPosS);
+		}}
+        }
+
+
+        function FindWall(matrics){
+        //Переменные позиции по ряду и относительно линии
+		let x = 0;
+		let xTwo = 0;
+        let end = false;
+        let WallPosS = [];
+        let xW = 0;
+        //Цикл проверяет все точки матрицы на CONST врага
+		while(end == false){
+	    if(matrics[xTwo][x] == 3){
+        //Удачно - записываем позицию
+		WallPosS[xW + 0] = x;
+        WallPosS[xW + 1] = xTwo;
+        xW = xW + 2;
+        }
+		x = x + 1;										
+        if(x >= matrics[0].length){
+        x = 0;
+		xTwo = xTwo + 1;
+        }						
+	    if(xTwo >= matrics.length){
+		end = true;
+        if(debug == 1){console.log("Координаты стен : " + WallPosS);}
+        return(WallPosS);
+		}}
+        }
+
+
+        function FindTrigger(matrics){
+        //Переменные позиции по ряду и относительно линии
+		let x = 0;
+		let xTwo = 0;
+        let end = false;
+        let TriggerPosS = [];
+        let xT = 0;
+        //Цикл проверяет все точки матрицы на CONST врага
+		while(end == false){
+	    if(matrics[xTwo][x] == 4){
+        //Удачно - записываем позицию
+		TriggerPosS[xT + 0] = x;
+        TriggerPosS[xT + 1] = xTwo;
+        xT = xT + 2;
+        }
+		x = x + 1;										
+        if(x >= matrics[0].length){
+        x = 0;
+		xTwo = xTwo + 1;
+        }						
+	    if(xTwo >= matrics.length){
+		end = true;
+        if(debug == 1){console.log("Координаты триггеров : " + TriggerPosS);}
+        return(TriggerPosS);
+		}}
+        }
+
+FindHero(MainPlace);
+FindMonster(MainPlace);
+FindWall(MainPlace);
+FindTrigger(MainPlace);
+
+
+    function FindObstacles(FutureHeroPos,matrics){
+    let HeroFP = FutureHeroPos;
+    let MonstersFP = FindMonster(MainPlace);
+    let WallsFP = FindWall(MainPlace);
+    let TriggersFP = FindTrigger(MainPlace);
+
+
+    let UniqueBoolean = '';
+
+    let end = false;
+    xFP = 0;
+    while(end == false){
+    if(MonstersFP[xFP] == HeroFP[0] && MonstersFP[xFP + 1] == HeroFP[1]){
+    return("fight");
+    }
+    if(WallsFP[xFP] == HeroFP[0] && WallsFP[xFP + 1] == HeroFP[1]){
+    return("false");
+    }
+    if(TriggersFP[xFP] == HeroFP[0] && TriggersFP[xFP + 1] == HeroFP[1]){
+    return("next");
+    }
+    
+    if(xFP >= 400){
+    xFP = 0;
+    end = true;
+    }
+    xFP = xFP + 2;
+
+    }
+
+}
+
+
+    var xObjCreateX = 0;
+    var xObjCreateY = 0;
+    var xObjCreateTop = 10;
+    var xObjCreateLeft = 10;
+
+    function PlaceCreate(matrics,blocks){
+    let end = false;
+    while(end == false){
+    var NewObj = document.createElement('img');
+    NewObj.style.position = "absolute";
+    NewObj.style.top = xObjCreateTop + "px";
+    NewObj.style.left = xObjCreateLeft + "px";
+    NewObj.style.height = '100px';
+    NewObj.style.width = '100px';
+    
+    
+    //NewObj.style.backgroundColor = "#111111";
+    NewObj.id = 'obj' + xObjCreateX + "AND" + xObjCreateY;
+    document.getElementById('StartPos').appendChild(NewObj);
+
+
+    if(xObjCreateX < matrics[0].length){
+    xObjCreateX = xObjCreateX + 1;
+    xObjCreateLeft = xObjCreateLeft + 100;
+    }
+    if(xObjCreateX >= matrics[0].length){
+    xObjCreateX = 0;
+    xObjCreateY = xObjCreateY + 1;
+    xObjCreateTop = xObjCreateTop + 100;
+    xObjCreateLeft = 10;
+    }
+    if(xObjCreateY == matrics.length){
+    xObjCreateX = 0;
+    xObjCreateY = 0;
+    xObjCreateTop = 10;
+    xObjCreateLeft = 10;
+    end = true;
+    }
+    }
+	}
+
+    function PlaceDelete(matrics){
+    let xDeleteX = 0;
+    let xDeleteY = 0;
+    let end = false;
+    while(end == false){
+    if(xDeleteX < matrics[0].length){
+    document.getElementById("obj" + xDeleteX + "AND" + xDeleteY).remove(); 
+    xDeleteX = xDeleteX + 1;
+    }
+    if(xDeleteX >= matrics[0].length){
+    xDeleteX = 0;
+    xDeleteY = xDeleteY + 1;
+    }
+    if(xDeleteY == matrics.length){
+    xDeleteX = 0;
+    xDeleteY = 0;
+    end = true; 
+    }
+    }
+}
+
+    window.ondragstart = function(){return false;}
+
+    PlaceCreate(MainPlace);
+    //PlaceDelete(MainPlace);
+    
+    function PlacePaint(matrics){
+    let xPaintX = 0;
+    let xPaintY = 0;
+    let end = false;
+
+    while(end == false){
+    if(matrics[xPaintY][xPaintX] == 0){
+    document.getElementById("obj" + xPaintX + "AND" + xPaintY).src = "https://cdn.discordapp.com/attachments/640482358247555093/831419995715403796/02_1080_1080.png";
+    }
+    if(matrics[xPaintY][xPaintX] == 1){
+    document.getElementById("obj" + xPaintX + "AND" + xPaintY).src = "https://cdn.discordapp.com/attachments/640482358247555093/831439121213947904/02_1.png";
+    }
+    if(matrics[xPaintY][xPaintX] == 2){
+    document.getElementById("obj" + xPaintX + "AND" + xPaintY).src = "https://cdn.discordapp.com/attachments/640482358247555093/831439255477551113/02_2.png";
+    }
+    if(matrics[xPaintY][xPaintX] == 3){
+    document.getElementById("obj" + xPaintX + "AND" + xPaintY).src = "";
+    }
+    if(matrics[xPaintY][xPaintX] == 4){
+    document.getElementById("obj" + xPaintX + "AND" + xPaintY).src = "https://cdn.discordapp.com/attachments/640482358247555093/831419995715403796/02_1080_1080.png";
+    }
+
+
+
+    if(xPaintX < matrics[0].length){
+    xPaintX = xPaintX + 1;
+    }
+    if(xPaintX >= matrics[0].length){
+    xPaintX = 0;
+    xPaintY = xPaintY + 1;
+    }
+    if(xPaintY == matrics.length){
+    xPaintX = 0;
+    xPaintY = 0;
+    end = true;
+    }
+
+    }
+
+    }
+
+    PlacePaint(MainPlace);
+
+    
+
+
+    function PlaceNext(locate,matrics){
+    if(locate == 1){
+        PlaceDelete(matrics);
+        matrics = [
+           [0,0,0,0,0,0,0,0,],
+           [0,0,0,3,5,3,3,0,],
+           [0,0,0,0,0,0,0,0,],
+           [0,0,0,2,0,0,0,0,],
+           [0,0,0,0,0,0,1,0,],
+           [0,0,0,0,0,0,0,0,],
+           [0,0,0,0,0,3,1,3,],
+           [0,0,0,0,0,3,0,3,],
+           [0,3,1,3,3,3,3,3,]
+           ]
+           PlaceCreate(matrics);
+           return(matrics);
+           
+    }
+    }
+
+
+//Функции драки (Н)
+
+
+
+
+    function Fight(Class,MobType,MobLVL){
+    if(Class == 'mag'){
+
+
+				}
+
+    }
+
+    var RezMatrics = MainPlace;
+    function FightAct(actType){
+				if(actType == 1){
+				var xOpacity = 0;
+				RezMatrics = MainPlace;
+                //alert(RezMatrics + "      " + MainPlace);
+                PlaceDelete(MainPlace);
+				var idFONE = setInterval(function(){xOpacity = xOpacity + 0.01; document.getElementById("FONE").style.opacity = xOpacity; document.getElementById("HP").style.opacity = xOpacity; document.getElementById("mobHP").style.opacity = xOpacity; if(xOpacity >= 1.00){xOpacity = 1.00; document.getElementById("FONE").style.opacity = xOpacity; clearInterval(idFONE);}},10);
+				}
+
+				if(actType == 0){
+				var xOpacity = 1;
+				MainPlace = RezMatrics;
+                //alert(RezMatrics + "      " + MainPlace);
+				var idFONE = setInterval(function(){xOpacity = xOpacity - 0.01; document.getElementById("FONE").style.opacity = xOpacity; if(xOpacity <= 0.00){xOpacity = 0.00; document.getElementById("FONE").style.opacity = xOpacity; document.getElementById("HP").style.opacity = xOpacity; document.getElementById("mobHP").style.opacity = xOpacity; clearInterval(idFONE); PlaceCreate(RezMatrics); PlacePaint(RezMatrics); }},10);}
+}
+
+				
+FightAct(1);
+//FightAct(0);
+
+
+//Функции драки (К)
+
+
+    function PlaceMove(matrics,step){
+    //alert(MainPlace[CurrentHeroPos[1]][CurrentHeroPos[0]]);
+    let CurrentHeroPos = FindHero(MainPlace);
+    let FutureHeroPos = [];
+
+    if(step == 'up'){
+
+	FutureHeroPos[0] = CurrentHeroPos[0] + 0;
+    FutureHeroPos[1] = CurrentHeroPos[1] + -1;
+    if(FutureHeroPos[1] == -1){
+    return('false');
+    }
+    if(FindObstacles(FutureHeroPos) == 'fight'){
+    
+    } else if(FindObstacles(FutureHeroPos) == 'next'){
+    MainPlace = PlaceNext(NEWLOCATE,matrics);
+    }
+    if(FindObstacles(FutureHeroPos) != 'false'){
+    MainPlace[CurrentHeroPos[1]][CurrentHeroPos[0]] = 0;
+    MainPlace[FutureHeroPos[1]][FutureHeroPos[0]] = 2;
+    }
+    }
+
+	if(step == 'down'){
+    FutureHeroPos[0] = CurrentHeroPos[0] + 0;
+    FutureHeroPos[1] = CurrentHeroPos[1] + 1;
+    if(FutureHeroPos[1] == matrics.length){
+    return('false');
+    }
+    if(FindObstacles(FutureHeroPos) == 'fight'){
+    
+    } else if(FindObstacles(FutureHeroPos) == 'next'){
+    MainPlace = PlaceNext(NEWLOCATE,matrics);
+    }
+    if(FindObstacles(FutureHeroPos) != 'false'){
+    MainPlace[CurrentHeroPos[1]][CurrentHeroPos[0]] = 0;
+    MainPlace[FutureHeroPos[1]][FutureHeroPos[0]] = 2;							
+	}
+    }
+
+	if(step == 'left'){
+    FutureHeroPos[0] = CurrentHeroPos[0] + -1;
+    FutureHeroPos[1] = CurrentHeroPos[1] + 0;
+    if(FutureHeroPos[0] == -1){
+    return('false');
+    }
+    if(FindObstacles(FutureHeroPos) == 'fight'){
+    
+    } else if(FindObstacles(FutureHeroPos) == 'next'){
+    MainPlace = PlaceNext(NEWLOCATE,matrics);
+    }
+    if(FindObstacles(FutureHeroPos) != 'false'){
+    MainPlace[CurrentHeroPos[1]][CurrentHeroPos[0]] = 0;
+    MainPlace[FutureHeroPos[1]][FutureHeroPos[0]] = 2;							
+	}
+    }
+	
+    if(step == 'right'){
+    FutureHeroPos[0] = CurrentHeroPos[0] + 1;
+    FutureHeroPos[1] = CurrentHeroPos[1] + 0;
+    if(FutureHeroPos[0] == matrics[0].length){
+    return('false');
+    }
+    if(FindObstacles(FutureHeroPos) == 'fight'){
+    
+    } else if(FindObstacles(FutureHeroPos) == 'next'){
+    MainPlace = PlaceNext(NEWLOCATE,matrics);
+    }
+    if(FindObstacles(FutureHeroPos) != 'false'){
+    MainPlace[CurrentHeroPos[1]][CurrentHeroPos[0]] = 0;
+    MainPlace[FutureHeroPos[1]][FutureHeroPos[0]] = 2;
+    }				
+    }
+    PlacePaint(MainPlace);
+
+    if(debug == 1){console.log(MainPlace[0] + "\n" + MainPlace[1] + "\n" + MainPlace[2] + "\n" + MainPlace[3] + "\n" + MainPlace[4]);}
+	}
+
+
+           
+       </script>
+        
+    </body>
+</html>
