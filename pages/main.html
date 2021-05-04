@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+				<title>txtCreator</title>
+</head>
+<body bgcolor="black">
+<a style="color:white;">Поле работы</a>
+<br/><br/>
+<textarea style="color:white; background:black;" id="TA" cols="42" rows="15" maxlength="630">
+</textarea>
+<button style="color:white; background:black;" onclick="interpres()">Преобразовать</button>
+<br/><br/>
+<a id="TAPP" hidden style="color:white;">Поле после обработки(Для нахождения багов)</a>
+<br/><br/>
+<textarea hidden readonly style="color:white; background:black;" id="TAP" cols="84" rows="15" maxlength="630">
+</textarea>
+<button id="TAPB" style="color:white; background:black;" onclick="disableEl()">Скрыть</button>
+<button style="position:absolute; left:335px; top:10px; color:white; background:black;" onclick="ALERT()"> i </button>
+
+<script>
+document.getElementById("TAP").hidden = false;
+document.getElementById("TAPP").hidden = false;
+function interpres(){
+let TextAreaInfo = document.getElementById("TA").value;
+TextAreaInfo = TextAreaInfo.replaceAll("\\","\\\\");
+TextAreaInfo = TextAreaInfo.replaceAll("\n","\\n");
+TextAreaInfo = "\"" + TextAreaInfo + "\"";
+
+var Copy = document.createElement('textarea');
+document.body.appendChild(Copy);  
+Copy.value = TextAreaInfo;
+Copy.select();
+document.execCommand("copy");
+document.body.removeChild(Copy);
+
+alert("Готовый текст скопирован в буфер");
+} 
+
+function CheckRows(){
+let TextAreaInfo = document.getElementById("TA").value;
+let SPLIT = TextAreaInfo.split("\n");
+if(SPLIT.length >= 16){
+let x = 0;
+let line = "";
+while(x <= 16){
+line = line + SPLIT[x];
+x = x + 1;
+if(x < 15){line = line + "\n";}
+if(x == 15){
+x = x + 1;
+document.getElementById("TA").value = line;
+console.log(line);
+} } }
+let PostLine = document.getElementById("TA").value;
+
+PostLine = PostLine.replaceAll("\\","\\\\");
+PostLine = PostLine.replaceAll("\\n","\n");
+document.getElementById("TAP").value = PostLine;
+
+}
+
+var DisX = 0;
+function disableEl(){
+DisX = DisX + 1;
+if(DisX == 1){
+document.getElementById("TAP").hidden = true;
+document.getElementById("TAPB").innerHTML = "Показать";
+document.getElementById("TAPP").hidden = true;
+}
+if(DisX == 2){
+document.getElementById("TAP").hidden = false;
+document.getElementById("TAPB").innerHTML = "Скрыть";
+document.getElementById("TAPP").hidden = false;
+DisX = 0;
+}
+} 
+setInterval("CheckRows()", 300);
+
+function ALERT(){
+alert("Данный интерпритатор упрощает тебе жизнь! Больше никаких \\\\ и \\n с + ... Теперь всё легче и понятней! ");
+alert("Выйти за рамки тоже не выйдет, это удобно. Есть пару правил:");
+alert("1.Когда ты максимально приблизился текстом к правому краю блока, не нужно печатать дальше чтобы строка сместилась вниз, это неправильно, нужно просто начать с новой строки!");
+alert("Больше я правил не придумал, но они появятся позже");
+} 
+
+</script>
+				
+</body>
+</html>
