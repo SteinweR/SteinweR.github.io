@@ -32,6 +32,7 @@ body {
 <br/><br/>
 <button id="TAPB" style="color:white; background:rgb(62, 134, 78); border: 2px solid white; border-radius: 10px;" onclick="disableEl()">Скрыть</button>
 <button style="position:absolute; left:120px; top:10px; color:white; background:rgb(62, 134, 78); border: 2px solid white; border-radius: 10px;" onclick="ALERT()"> i </button>
+<button style="position:absolute; left:160px; top:10px; color:white; background:rgb(62, 134, 78); border: 2px solid white; border-radius: 10px;" onclick="PROMPT()">Отредактировать готовый текст</button>
 <br/><br/>
 <a style="color:white; font-family:'Century Gothic' Cursive; font-size: larger;">Изменить размеры блока</a>
 <br/><br/>
@@ -127,6 +128,14 @@ document.getElementById("TAP").maxlength =  (parseInt(document.getElementById("C
 ROWS = parseInt(document.getElementById("CHANGEtwo").value);
 }
 
+function PROMPT(){
+let info = prompt("Введите готовую строку : ");
+
+info = info.replaceAll("\\\\","\\");
+info = info.replaceAll("\\n","\n");
+info = info.replaceAll("\"","");
+document.getElementById("TA").value = info;
+}
 </script>
 				
 </body>
