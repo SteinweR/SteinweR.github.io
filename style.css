@@ -199,6 +199,10 @@ body{
 
 html * { max-height:999999px; }
 
+html{
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
 
 button{
     border-style: inset;
