@@ -197,7 +197,7 @@ body{
 
 textarea{
     font-size: 13.35px;
-    overflow: hidden
+    overflow: visible;
 }
 
 
