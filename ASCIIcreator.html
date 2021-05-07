@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+				<title>txtCreator</title>
+</head>
+
+<style>
+
+html {
+    height: 100%;
+}
+body {
+	height: 100%;
+	background: linear-gradient(180deg, #029c36, #3e9651);
+}
+
+</style>
+
+
+<body>
+<a style="color:white; font-family:'Century Gothic' Cursive; font-size: larger;">Поле работы</a>
+<br/><br/>
+<textarea style="resize: none; color:white; background: linear-gradient(180deg, #000000, #111111); border: 5px solid; border-radius: 15px;" id="TA" cols="42" rows="15">
+</textarea>
+<br/><br/>
+<button style="color:white; background:rgb(62, 134, 78); border: 2px solid white; border-radius: 10px;" onclick="interpres()">Преобразовать</button>
+<br/><br/>
+<a id="TAPP" hidden style="color:white; font-family:'Century Gothic' Cursive; font-size: larger;">Поле после обработки(Для нахождения багов)</a>
+<br/><br/>
+<textarea hidden readonly style="resize: none; color:white; background: linear-gradient(180deg, #000000, #111111); border: 5px solid white; border-radius: 15px;" id="TAP" cols="84" rows="15">
+</textarea>
+<br/><br/>
+<button id="TAPB" style="color:white; background:rgb(62, 134, 78); border: 2px solid white; border-radius: 10px;" onclick="disableEl()">Скрыть</button>
+<button style="position:absolute; left:120px; top:10px; color:white; background:rgb(62, 134, 78); border: 2px solid white; border-radius: 10px;" onclick="ALERT()"> i </button>
+<button style="position:absolute; left:160px; top:10px; color:white; background:rgb(62, 134, 78); border: 2px solid white; border-radius: 10px;" onclick="PROMPT()">Отредактировать готовый текст</button>
+<br/><br/>
+<a style="color:white; font-family:'Century Gothic' Cursive; font-size: larger;">Изменить размеры блока</a>
+<br/><br/>
+<textarea id="CHANGEone" style="resize: none; color:white; background: linear-gradient(180deg, #000000, #111111); border: 2px solid white; border-radius: 10px;" cols="5" rows="1"></textarea>
+<textarea id="CHANGEtwo" style="resize: none;color:white; background: linear-gradient(180deg, #000000, #111111); border: 2px solid white; border-radius: 10px;" cols="5" rows="1"></textarea>
+<br/><br/>
+<a style="color:white; font-family:'Century Gothic' Cursive; font-size: medium;">Длинна</a>
+<a style="color:white; font-family:'Century Gothic' Cursive; font-size: medium;">--</a>
+<a style="color:white; font-family:'Century Gothic' Cursive; font-size: medium;">Высота</a>
+<br/><br/>
+<button style="color:white; background:rgb(62, 134, 78); border: 2px solid white; border-radius: 10px;" onclick="ChangeScale()">Изменить</button>
+
+
+<script>
+var ROWS = 15;
+
+document.getElementById("TAP").hidden = false;
+document.getElementById("TAPP").hidden = false;
+function interpres(){
+let TextAreaInfo = document.getElementById("TA").value;
+TextAreaInfo = TextAreaInfo.replaceAll("\\","\\\\");
+TextAreaInfo = TextAreaInfo.replaceAll("\n","\\n");
+TextAreaInfo = "\"" + TextAreaInfo + "\"";
+
+var Copy = document.createElement('textarea');
+document.body.appendChild(Copy);  
+Copy.value = TextAreaInfo;
+Copy.select();
+document.execCommand("copy");
+document.body.removeChild(Copy);
+
+alert("Готовый текст скопирован в буфер обмена");
+} 
+
+function CheckRows(){
+let TextAreaInfo = document.getElementById("TA").value;
+let SPLIT = TextAreaInfo.split("\n");
+if(SPLIT.length >= ROWS){
+let x = 0;
+let line = "";
+while(x <= ROWS){
+line = line + SPLIT[x];
+x = x + 1;
+if(x < ROWS){line = line + "\n";}
+if(x == ROWS){
+x = x + 1;
+document.getElementById("TA").value = line;
+console.log(line);
+} } }
+let PostLine = document.getElementById("TA").value;
+
+PostLine = PostLine.replaceAll("\\","\\\\");
+PostLine = PostLine.replaceAll("\\n","\n");
+document.getElementById("TAP").value = PostLine;
+
+}
+
+var DisX = 0;
+function disableEl(){
+DisX = DisX + 1;
+if(DisX == 1){
+document.getElementById("TAP").hidden = true;
+document.getElementById("TAPB").innerHTML = "Показать";
+document.getElementById("TAPP").hidden = true;
+}
+if(DisX == 2){
+document.getElementById("TAP").hidden = false;
+document.getElementById("TAPB").innerHTML = "Скрыть";
+document.getElementById("TAPP").hidden = false;
+DisX = 0;
+}
+} 
+setInterval("CheckRows()", 300);
+
+function ALERT(){
+alert("Данный интерпритатор упрощает тебе жизнь! Больше никаких \\\\ и \\n с + ... Теперь всё легче и понятней! ");
+alert("Можно так-же менять размеры начального блока, но обычно это не требуется")
+alert("Выйти за рамки тоже не выйдет, это удобно. Есть пару правил:");
+alert("1. Когда ты максимально приблизился текстом к правому краю блока, не нужно печатать дальше чтобы строка сместилась вниз, это неправильно, нужно просто начать с новой строки!");
+alert("2. Нельзя использовать \"\\n\" и \" ");
+alert("Больше я правил не придумал, но они появятся позже");
+}
+
+function ChangeScale(){
+document.getElementById("TA").cols = parseInt(document.getElementById("CHANGEone").value);
+document.getElementById("TA").rows = parseInt(document.getElementById("CHANGEtwo").value);
+document.getElementById("TA").maxlength =  parseInt(document.getElementById("CHANGEone").value) * parseInt(document.getElementById("CHANGEtwo").value);
+
+document.getElementById("TAP").cols = parseInt(document.getElementById("CHANGEone").value) * 2;
+document.getElementById("TAP").rows = parseInt(document.getElementById("CHANGEtwo").value);
+//document.getElementById("TAP").maxlength =  (parseInt(document.getElementById("CHANGEone").value) * 4) * parseInt(document.getElementById("CHANGEtwo").value);
+
+ROWS = parseInt(document.getElementById("CHANGEtwo").value);
+}
+
+function PROMPT(){
+let info = prompt("Введите готовую строку : ");
+
+info = info.replaceAll("\\\\","\\");
+info = info.replaceAll("\\n","\n");
+info = info.replaceAll("\"","");
+document.getElementById("TA").value = info;
+}
+</script>
+				
+</body>
+</html>
