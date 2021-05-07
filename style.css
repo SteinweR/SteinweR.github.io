@@ -9,6 +9,8 @@
     outline:none;
     width: 818px;
     height: 345px;
+    max-height: 9001em;
+    overflow: visible;
 }
 
 .MainTop{
@@ -22,6 +24,8 @@
     outline:none;
     width: 818px;
     height: 30px;
+    max-height: 9001em;
+    overflow: visible;
 }
 
 .MainBorder{
@@ -35,6 +39,8 @@
     outline:none;
     width: 852px;
     height: 465px;
+    max-height: 9001em;
+    overflow: visible;
     
 }
 
@@ -125,7 +131,6 @@
     border-color: black;
     color: white;
     outline:none;
-    overflow: visible;
 }
 
 #OPTIONS_SEND_BUTTON{
@@ -198,8 +203,6 @@ body{
 
 textarea{
     font-size: 13.35px;
-    overflow: visible;
-    max-height: 9001em;
 }
 
 
