@@ -1,9 +1,9 @@
-html{
-    -webkit-text-size-adjust:none;
-    -moz-text-size-adjust:none;
-    -ms-text-size-adjust:none;
-    -o-text-size-adjust:none;
-}
+html,body {
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    text-size-adjust: none;
+  }
 .MainScreen{
     position: absolute;
     top: 70px;
@@ -15,7 +15,6 @@ html{
     outline:none;
     width: 818px;
     height: 345px;
-    max-height:99999px;
 }
 
 .MainTop{
@@ -29,7 +28,6 @@ html{
     outline:none;
     width: 818px;
     height: 30px;
-    max-height:99999px;
 }
 
 .MainBorder{
@@ -43,7 +41,6 @@ html{
     outline:none;
     width: 852px;
     height: 465px;
-    max-height:99999px;
 }
 
 .BUTTON{
