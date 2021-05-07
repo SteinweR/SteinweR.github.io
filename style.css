@@ -126,9 +126,6 @@
     color: white;
     outline:none;
 }
-textarea{
-    font-size: 13.35px;
-}
 
 #OPTIONS_SEND_BUTTON{
     position: absolute;
@@ -194,15 +191,14 @@ color: white;
 
 body{
     background-color: black;
+    font-size: 1.2em;
 }
 
 
-html * { max-height:999999px; }
-
-html{
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
+html * { 
+    max-height:999999px;
 }
+
 
 button{
     border-style: inset;
