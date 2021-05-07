@@ -196,6 +196,10 @@ body{
     background-color: black;
 }
 
+
+html * { max-height:999999px; }
+
+
 button{
     border-style: inset;
     border-color: black;
