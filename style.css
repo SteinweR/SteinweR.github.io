@@ -1,0 +1,189 @@
+.MainScreen{
+    position: absolute;
+    top: 70px;
+    left: 25px;
+    resize: none;
+    background-color: black;
+    border-color: black;
+    color: white;
+    outline:none;
+}
+
+.MainTop{
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    resize: none;
+    background-color: black;
+    border-color: black;
+    color: white;
+    outline:none;
+}
+
+.MainBorder{
+    position: absolute;
+    top: auto;
+    left: auto;
+    resize: none;
+    background-color: black;
+    border-color: black;
+    color: white;
+    outline:none;
+}
+
+.BUTTON{
+    opacity: 0%;
+}
+
+.CB{
+    background-color: white;
+    color: white;
+}
+
+#NEWGAME_BUTTON{
+    position: absolute;
+    top: 25px;
+    left: 80px;
+    height: 30px;
+    width: 150px;
+}
+
+#OPTIONS_OPEN_BUTTON{
+    position: absolute;
+    top: 25px;
+    left: 250px;
+    height: 30px;
+    width: 125px;
+}
+
+#TITLES_OPEN_BUTTON{
+    position: absolute;
+    top: 25px;
+    left: 395px;
+    height: 30px;
+    width: 97px;
+}
+
+#CHANGELOG_OPEN_BUTTON{
+    position: absolute;
+    top: 25px;
+    left: 515px;
+    height: 30px;
+    width: 272px;
+}
+
+#OPTIONS_BACK_BUTTON{
+    position: absolute;
+    top: 25px;
+    left: 80px;
+    height: 30px;
+    width: 706px;
+}
+
+#OPTIONS_SAVE_BUTTON{
+    position: absolute;
+    top: 70px;
+    left: 50px;
+    height: 30px;
+    width: 355px;
+}
+
+#OPTIONS_LOAD_BUTTON{
+    position: absolute;
+    top: 70px;
+    left: 435px;
+    height: 30px;
+    width: 380px;
+}
+
+#OPTIONS_SOUND_BUTTON{
+    position: absolute;
+    top: 145px;
+    left: 350px;
+    height: 35px;
+    width: 135px;
+}
+
+#SpecialCode{
+    position: absolute;
+    top: 230px;
+    left: 190px;
+}
+
+.AREA{
+    resize: none;
+    background-color: black;
+    border-color: black;
+    color: white;
+    outline:none;
+}
+
+#OPTIONS_SEND_BUTTON{
+    position: absolute;
+    top: 335px;
+    left: 350px;
+    height: 30px;
+    width: 150px;
+}
+
+#MUSIC_AREA{
+    position: absolute;
+    top: 145px;
+    left: 35px;
+    height: 37px;
+}
+
+#SOUND_AREA{
+    position: absolute;
+    top: 145px;
+    left: 540px;
+    height: 37px;
+}
+
+#MUSIC_DOWN{
+    position: absolute;
+    top: 165px;
+    left: 55px;
+    height: 20px;
+    width: 25px;
+}
+
+#SOUND_DOWN{
+    position: absolute;
+    top: 165px;
+    left: 605px;
+    height: 20px;
+    width: 25px;
+}
+
+
+#MUSIC_UP{
+    position: absolute;
+    top: 164px;
+    left: 210px;
+    height: 20px;
+    width: 40px;
+}
+
+#SOUND_UP{
+    position: absolute;
+    top: 164px;
+    left: 760px;
+    height: 20px;
+    width: 40px;
+}
+
+.SOUNDandMUSIC_BUTTON{
+background-color: black;
+color: white;
+}
+
+body{
+    background-color: black;
+}
+
+button{
+    border-style: inset;
+    border-color: black;
+    
+}

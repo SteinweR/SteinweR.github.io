@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Symbol Adventure</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<textarea hidden class="MainBorder" id="MainBorder" readonly cols="120" rows="31"></textarea>
+<textarea hidden class="MainScreen" id="MainScreen" readonly cols="114" rows="23"></textarea>
+<textarea hidden class="MainTop" id="MainTop" readonly cols="114" rows="2"></textarea>
+
+<textarea hidden class="AREA" id="NEWGAME_BUTTON" onmouseover="ButtonLightEffect('NEWGAME_BUTTON')" onmouseout="ButtonLightEffect('RESET_1')" rows="2" readonly></textarea>
+<textarea hidden class="AREA" id="OPTIONS_OPEN_BUTTON" onmouseover="ButtonLightEffect('OPTIONS_OPEN_BUTTON')" onmouseout="ButtonLightEffect('RESET_1')" onclick="OPTIONS('act');" onmouse rows="2" readonly></textarea>
+<textarea hidden class="AREA" id="TITLES_OPEN_BUTTON" onmouseover="ButtonLightEffect('TITLES_OPEN_BUTTON')" onmouseout="ButtonLightEffect('RESET_1')" rows="2" readonly></textarea>
+<textarea hidden class="AREA" id="CHANGELOG_OPEN_BUTTON" onmouseover="ButtonLightEffect('CHANGELOG_OPEN_BUTTON')" onmouseout="ButtonLightEffect('RESET_1')" rows="2" readonly></textarea>
+
+<textarea hidden class="AREA" id="OPTIONS_BACK_BUTTON" onmouseover="ButtonLightEffect('OPTIONS_1_LIGHT_1')" onmouseout="ButtonLightEffect('RESET_2')" onclick="OPTIONS('!act');" rows="2" readonly></textarea>
+<textarea hidden class="AREA" id="OPTIONS_LOAD_BUTTON" onmouseover="ButtonLightEffect('OPTIONS_1_LIGHT_2')" onmouseout="ButtonLightEffect('RESET_2')" onclick="OPTIONS('load');" rows="2" readonly></textarea>
+<textarea hidden class="AREA" id="OPTIONS_SAVE_BUTTON" onmouseover="ButtonLightEffect('OPTIONS_1_LIGHT_3')" onmouseout="ButtonLightEffect('RESET_2')" onclick="OPTIONS('save');" rows="2" readonly></textarea>
+<textarea hidden class="AREA" id="OPTIONS_SOUND_BUTTON" onmouseover="ButtonLightEffect('OPTIONS_1_LIGHT_4')" onmouseout="ButtonLightEffect('RESET_2')" onclick="OPTIONS('checksound');" rows="2" readonly></textarea>
+<textarea hidden class="AREA" id="OPTIONS_SEND_BUTTON" onmouseover="ButtonLightEffect('OPTIONS_1_LIGHT_5')" onmouseout="ButtonLightEffect('RESET_2')" onclick="OPTIONS('send');" rows="2" readonly></textarea>
+
+<textarea hidden class="AREA" id="SpecialCode" cols="68" rows="6" maxlength="402"></textarea>
+<textarea hidden class="AREA" id="MUSIC_AREA" cols="40" rows="2" readonly></textarea>
+<textarea hidden class="AREA" id="SOUND_AREA" cols="40" rows="2" readonly></textarea>
+
+<button hidden class="SOUNDandMUSIC_BUTTON" id="MUSIC_DOWN" onmouseover="ButtonLightEffect('OPTIONS_1_DOWN_LIGHT_1')" onmouseout="ButtonLightEffect('RESET_4')" onclick="OPTIONS('musicdown');"></button>
+<button hidden class="SOUNDandMUSIC_BUTTON" id="MUSIC_UP" onmouseover="ButtonLightEffect('OPTIONS_1_UP_LIGHT_1')" onmouseout="ButtonLightEffect('RESET_4')" onclick="OPTIONS('musicup');"></button>
+<button hidden class="SOUNDandMUSIC_BUTTON" id="SOUND_DOWN" onmouseover="ButtonLightEffect('OPTIONS_1_DOWN_LIGHT_2')" onmouseout="ButtonLightEffect('RESET_4')" onclick="OPTIONS('sounddown');"></button>
+<button hidden class="SOUNDandMUSIC_BUTTON" id="SOUND_UP" onmouseover="ButtonLightEffect('OPTIONS_1_UP_LIGHT_2')" onmouseout="ButtonLightEffect('RESET_4')" onclick="OPTIONS('soundup');"></button>
+
+
+
+
+<script lang="JavaScript" src="templates.js"></script>
+<script lang="JavaScript" src="main.js"></script>
+
+
+
+
+</body>
+
+</html>
