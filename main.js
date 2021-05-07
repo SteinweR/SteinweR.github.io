@@ -161,7 +161,7 @@ if(mode == 'checksound'){
     let random = Math.floor(Math.random() * (20 - 1) + 1);
     console.log(random);
     audioBUTTON.volume = globalSOUND;
-    if(random == 8){audioBUTTON.src = 'https://cdn.discordapp.com/attachments/640482358247555093/826724445682794516/BULLET.wav';}
+    if(random == 8){audioBUTTON.src = 'sound/button_click.wav';}
     audioBUTTON.play();
 }
 
