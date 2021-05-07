@@ -92,6 +92,22 @@ html,body {
     width: 706px;
 }
 
+#TITLES_BACK_BUTTON{
+    position: absolute;
+    top: 25px;
+    left: 80px;
+    height: 30px;
+    width: 706px;
+}
+
+#CHANGELOG_BACK_BUTTON{
+    position: absolute;
+    top: 25px;
+    left: 80px;
+    height: 30px;
+    width: 706px;
+}
+
 #OPTIONS_SAVE_BUTTON{
     position: absolute;
     top: 70px;
@@ -187,6 +203,54 @@ html,body {
     left: 760px;
     height: 20px;
     width: 40px;
+}
+
+#TITLES_PAGE_DOWN{
+    position: absolute;
+    top: 70px;
+    left: 291px;
+    height: 45px;
+    width: 50px;
+}
+
+#TITLES_PAGE_UP{
+    position: absolute;
+    top: 70px;
+    left: 485px;
+    height: 45px;
+    width: 50px;
+}
+
+#TITLES_PAGE_AREA{
+    position: absolute;
+    top: 70px;
+    left: 365px;
+    height: 32px;
+    width: 100px;
+}
+
+#CHANGELOG_PAGE_DOWN{
+    position: absolute;
+    top: 70px;
+    left: 291px;
+    height: 45px;
+    width: 50px;
+}
+
+#CHANGELOG_PAGE_UP{
+    position: absolute;
+    top: 70px;
+    left: 485px;
+    height: 45px;
+    width: 50px;
+}
+
+#CHANGELOG_PAGE_AREA{
+    position: absolute;
+    top: 70px;
+    left: 365px;
+    height: 32px;
+    width: 100px;
 }
 
 .SOUNDandMUSIC_BUTTON{

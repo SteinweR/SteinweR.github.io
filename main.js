@@ -45,11 +45,21 @@ document.getElementById('NEWGAME_BUTTON').value = NEWGAME_BUTTON_1;
 document.getElementById('OPTIONS_OPEN_BUTTON').value = OPTIONS_BUTTON_1;
 document.getElementById('TITLES_OPEN_BUTTON').value = TITLES_BUTTON_1;
 document.getElementById('CHANGELOG_OPEN_BUTTON').value = CHANGELOG_BUTTON_1;
+
 document.getElementById('OPTIONS_BACK_BUTTON').value = OPTIONS_BACK_BUTTON_1;
 document.getElementById('OPTIONS_SAVE_BUTTON').value = OPTIONS_SAVE_BUTTON_1;
 document.getElementById('OPTIONS_LOAD_BUTTON').value = OPTIONS_LOAD_BUTTON_1;
 document.getElementById('OPTIONS_SOUND_BUTTON').value = OPTIONS_SOUND_BUTTON_1;
 document.getElementById('OPTIONS_SEND_BUTTON').value = OPTIONS_SEND_BUTTON_1;
+
+
+document.getElementById('TITLES_BACK_BUTTON').value = TITLES_BACK_BUTTON_1;
+document.getElementById('TITLES_PAGE_DOWN').value = TITLES_PAGE_DOWN_1;
+document.getElementById('TITLES_PAGE_UP').value = TITLES_PAGE_UP_1;
+
+document.getElementById('CHANGELOG_PAGE_DOWN').value = CHANGELOG_PAGE_DOWN_1;
+document.getElementById('CHANGELOG_PAGE_UP').value = CHANGELOG_PAGE_UP_1;
+
 
 document.getElementById('MUSIC_AREA').value = OPTIONS_1_MUSIC_7;
 document.getElementById('SOUND_AREA').value = OPTIONS_1_SOUND_7;
@@ -69,19 +79,29 @@ if(name == 'TITLES_OPEN_BUTTON'){document.getElementById('TITLES_OPEN_BUTTON').v
 if(name == 'CHANGELOG_OPEN_BUTTON'){document.getElementById('CHANGELOG_OPEN_BUTTON').value = CHANGELOG_BUTTON_2;}
 if(name == 'RESET_1'){document.getElementById('NEWGAME_BUTTON').value = NEWGAME_BUTTON_1; document.getElementById('OPTIONS_OPEN_BUTTON').value = OPTIONS_BUTTON_1; document.getElementById('TITLES_OPEN_BUTTON').value = TITLES_BUTTON_1; document.getElementById('CHANGELOG_OPEN_BUTTON').value = CHANGELOG_BUTTON_1;}
 
-if(name == 'OPTIONS_1_LIGHT_1'){document.getElementById('OPTIONS_BACK_BUTTON').value = OPTIONS_BACK_BUTTON_2;}
-if(name == 'OPTIONS_1_LIGHT_2'){document.getElementById('OPTIONS_LOAD_BUTTON').value = OPTIONS_LOAD_BUTTON_2;}
-if(name == 'OPTIONS_1_LIGHT_3'){document.getElementById('OPTIONS_SAVE_BUTTON').value = OPTIONS_SAVE_BUTTON_2;}
-if(name == 'OPTIONS_1_LIGHT_4'){document.getElementById('OPTIONS_SOUND_BUTTON').value = OPTIONS_SOUND_BUTTON_2;}
-if(name == 'OPTIONS_1_LIGHT_5'){document.getElementById('OPTIONS_SEND_BUTTON').value = OPTIONS_SEND_BUTTON_2;}
-if(name == 'OPTIONS_1_DOWN_LIGHT_1'){document.getElementById('MUSIC_DOWN').innerHTML = OPTIONS_1_DOWN_LIGHT_1;}
-if(name == 'OPTIONS_1_DOWN_LIGHT_2'){document.getElementById('SOUND_DOWN').innerHTML = OPTIONS_1_DOWN_LIGHT_2;}
-if(name == 'OPTIONS_1_UP_LIGHT_1'){document.getElementById('MUSIC_UP').innerHTML = OPTIONS_1_UP_LIGHT_1;}
-if(name == 'OPTIONS_1_UP_LIGHT_2'){document.getElementById('SOUND_UP').innerHTML = OPTIONS_1_UP_LIGHT_2;}
-if(name == 'RESET_2'){document.getElementById('OPTIONS_BACK_BUTTON').value = OPTIONS_BACK_BUTTON_1; document.getElementById('OPTIONS_SAVE_BUTTON').value = OPTIONS_SAVE_BUTTON_1; document.getElementById('OPTIONS_LOAD_BUTTON').value = OPTIONS_LOAD_BUTTON_1; document.getElementById('OPTIONS_SOUND_BUTTON').value = OPTIONS_SOUND_BUTTON_1; document.getElementById('OPTIONS_SEND_BUTTON').value = OPTIONS_SEND_BUTTON_1;}
-if(name == 'RESET_3'){document.getElementById('MainTop').value = TOP_2; document.getElementById('MainScreen').value = OPTIONS_1;}
-if(name == 'RESET_4'){document.getElementById('MUSIC_DOWN').innerHTML = OPTIONS_1_DOWN; document.getElementById('SOUND_DOWN').innerHTML = OPTIONS_1_DOWN; document.getElementById('SOUND_UP').innerHTML = OPTIONS_1_UP; document.getElementById('MUSIC_UP').innerHTML = OPTIONS_1_UP;}
+if(name == 'OPTIONS_BACK_BUTTON'){document.getElementById('OPTIONS_BACK_BUTTON').value = OPTIONS_BACK_BUTTON_2;}
+if(name == 'OPTIONS_LOAD_BUTTON'){document.getElementById('OPTIONS_LOAD_BUTTON').value = OPTIONS_LOAD_BUTTON_2;}
+if(name == 'OPTIONS_SAVE_BUTTON'){document.getElementById('OPTIONS_SAVE_BUTTON').value = OPTIONS_SAVE_BUTTON_2;}
+if(name == 'OPTIONS_SOUND_BUTTON'){document.getElementById('OPTIONS_SOUND_BUTTON').value = OPTIONS_SOUND_BUTTON_2;}
+if(name == 'OPTIONS_SEND_BUTTON'){document.getElementById('OPTIONS_SEND_BUTTON').value = OPTIONS_SEND_BUTTON_2;}
 
+if(name == 'MUSIC_DOWN'){document.getElementById('MUSIC_DOWN').innerHTML = OPTIONS_1_DOWN_LIGHT_1;}
+if(name == 'SOUND_DOWN'){document.getElementById('SOUND_DOWN').innerHTML = OPTIONS_1_DOWN_LIGHT_2;}
+if(name == 'MUSIC_UP'){document.getElementById('MUSIC_UP').innerHTML = OPTIONS_1_UP_LIGHT_1;}
+if(name == 'SOUND_UP'){document.getElementById('SOUND_UP').innerHTML = OPTIONS_1_UP_LIGHT_2;}
+
+if(name == 'TITLES_BACK_BUTTON'){document.getElementById('TITLES_BACK_BUTTON').value = TITLES_BACK_BUTTON_2;}
+if(name == 'TITLES_PAGE_DOWN'){document.getElementById('TITLES_PAGE_DOWN').value = TITLES_PAGE_DOWN_2;}
+if(name == 'TITLES_PAGE_UP'){document.getElementById('TITLES_PAGE_UP').value = TITLES_PAGE_UP_2;}
+
+if(name == 'CHANGELOG_BACK_BUTTON'){document.getElementById('CHANGELOG_BACK_BUTTON').value = CHANGELOG_BACK_BUTTON_2;}
+if(name == 'CHANGELOG_PAGE_DOWN'){document.getElementById('CHANGELOG_PAGE_DOWN').value = CHANGELOG_PAGE_DOWN_2;}
+if(name == 'CHANGELOG_PAGE_UP'){document.getElementById('CHANGELOG_PAGE_UP').value = CHANGELOG_PAGE_UP_2;}
+
+if(name == 'RESET_2'){document.getElementById('OPTIONS_BACK_BUTTON').value = OPTIONS_BACK_BUTTON_1; document.getElementById('OPTIONS_SAVE_BUTTON').value = OPTIONS_SAVE_BUTTON_1; document.getElementById('OPTIONS_LOAD_BUTTON').value = OPTIONS_LOAD_BUTTON_1; document.getElementById('OPTIONS_SOUND_BUTTON').value = OPTIONS_SOUND_BUTTON_1; document.getElementById('OPTIONS_SEND_BUTTON').value = OPTIONS_SEND_BUTTON_1;}
+if(name == 'RESET_3'){document.getElementById('MUSIC_DOWN').innerHTML = OPTIONS_1_DOWN; document.getElementById('SOUND_DOWN').innerHTML = OPTIONS_1_DOWN; document.getElementById('SOUND_UP').innerHTML = OPTIONS_1_UP; document.getElementById('MUSIC_UP').innerHTML = OPTIONS_1_UP;}
+if(name == 'RESET_4'){document.getElementById('TITLES_BACK_BUTTON').value = TITLES_BACK_BUTTON_1; document.getElementById('TITLES_PAGE_UP').value = TITLES_PAGE_UP_1; document.getElementById('TITLES_PAGE_DOWN').value = TITLES_PAGE_DOWN_1;}
+if(name == 'RESET_5'){document.getElementById('CHANGELOG_BACK_BUTTON').value = CHANGELOG_BACK_BUTTON_1; document.getElementById('CHANGELOG_PAGE_UP').value = CHANGELOG_PAGE_UP_1; document.getElementById('CHANGELOG_PAGE_DOWN').value = CHANGELOG_PAGE_DOWN_1;}
 }
 
 //Функция влючения / выключения hidden
@@ -166,7 +186,7 @@ if(mode == 'send'){
     }
     }
     }
-    
+
     document.getElementById('SpecialCode').value = "";
 }
 
@@ -180,6 +200,7 @@ globalSOUND = parseFloat(globalSOUND.toPrecision(3));
 }
 if(mode == 'musicdown' && globalMUSIC != 0.0){
 globalMUSIC = globalMUSIC - 0.1;
+let aaa = document.querySelector("textarea");
 globalMUSIC = parseFloat(globalMUSIC.toPrecision(3));
 }
 if(mode == 'musicup' && globalMUSIC != 0.7){
@@ -205,6 +226,89 @@ if(globalMUSIC == 0.3){document.getElementById('MUSIC_AREA').value = OPTIONS_1_M
 if(globalMUSIC == 0.2){document.getElementById('MUSIC_AREA').value = OPTIONS_1_MUSIC_2;}
 if(globalMUSIC == 0.1){document.getElementById('MUSIC_AREA').value = OPTIONS_1_MUSIC_1;}
 if(globalMUSIC == 0.0){document.getElementById('MUSIC_AREA').value = OPTIONS_1_MUSIC_0;}
+}
+
+
+}
+
+
+var xChangelogPage = 1;
+
+function CHANGELOG(mode){
+
+if(mode == 'act'){
+document.getElementById('MainScreen').value = CHANGELOG_PAGE_1;
+document.getElementById('CHANGELOG_PAGE_AREA').value = CHANGELOG_PAGE_AREA_1;
+document.getElementById('MainTop').value = TOP_2;
+HiddenSwith('CHANGELOG_BACK_BUTTON','on');
+HiddenSwith('CHANGELOG_PAGE_AREA','on');
+HiddenSwith('CHANGELOG_PAGE_DOWN','on');
+HiddenSwith('CHANGELOG_PAGE_UP','on');
+xTitlesPage = 1;
+}
+if(mode == '!act'){
+document.getElementById('MainScreen').value = OP_1;
+document.getElementById('MainTop').value = TOP_1;
+HiddenSwith('CHANGELOG_BACK_BUTTON','off');
+HiddenSwith('CHANGELOG_PAGE_AREA','off');
+HiddenSwith('CHANGELOG_PAGE_DOWN','off');
+HiddenSwith('CHANGELOG_PAGE_UP','off');
+}
+
+if(mode == 'up' && xChangelogPage !=6){
+xChangelogPage = xChangelogPage + 1;
+}
+if(mode == 'down' && xChangelogPage != 1){
+xChangelogPage = xChangelogPage - 1;
+}
+if(mode == 'up' || mode == 'down'){
+if(xChangelogPage == 1){document.getElementById('MainScreen').value = CHANGELOG_PAGE_1; document.getElementById('CHANGELOG_PAGE_AREA').value = CHANGELOG_PAGE_AREA_1;}
+if(xChangelogPage == 2){document.getElementById('MainScreen').value = CHANGELOG_PAGE_2; document.getElementById('CHANGELOG_PAGE_AREA').value = CHANGELOG_PAGE_AREA_2;}
+if(xChangelogPage == 3){document.getElementById('MainScreen').value = CHANGELOG_PAGE_3; document.getElementById('CHANGELOG_PAGE_AREA').value = CHANGELOG_PAGE_AREA_3;}
+if(xChangelogPage == 4){document.getElementById('MainScreen').value = CHANGELOG_PAGE_4; document.getElementById('CHANGELOG_PAGE_AREA').value = CHANGELOG_PAGE_AREA_4;}
+if(xChangelogPage == 5){document.getElementById('MainScreen').value = CHANGELOG_PAGE_5; document.getElementById('CHANGELOG_PAGE_AREA').value = CHANGELOG_PAGE_AREA_5;}
+if(xChangelogPage == 6){document.getElementById('MainScreen').value = CHANGELOG_PAGE_6; document.getElementById('CHANGELOG_PAGE_AREA').value = CHANGELOG_PAGE_AREA_6;}
+}
+
+
+}
+
+var xTitlesPage = 1;
+
+function TITLES(mode){
+
+if(mode == 'act'){
+document.getElementById('MainScreen').value = TITLES_PAGE_1;
+document.getElementById('TITLES_PAGE_AREA').value = TITLES_PAGE_AREA_1;
+document.getElementById('MainTop').value = TOP_2;
+HiddenSwith('TITLES_BACK_BUTTON','on');
+HiddenSwith('TITLES_PAGE_AREA','on');
+HiddenSwith('TITLES_PAGE_DOWN','on');
+HiddenSwith('TITLES_PAGE_UP','on');
+xTitlesPage = 1;
+}
+if(mode == '!act'){
+document.getElementById('MainScreen').value = OP_1;
+document.getElementById('MainTop').value = TOP_1;
+HiddenSwith('TITLES_BACK_BUTTON','off');
+HiddenSwith('TITLES_PAGE_AREA','off');
+HiddenSwith('TITLES_PAGE_DOWN','off');
+HiddenSwith('TITLES_PAGE_UP','off');
+}
+
+if(mode == 'up' && xTitlesPage !=6){
+xTitlesPage = xTitlesPage + 1;
+}
+if(mode == 'down' && xTitlesPage != 1){
+xTitlesPage = xTitlesPage - 1;
+}
+if(mode == 'up' || mode == 'down'){
+if(xTitlesPage == 1){document.getElementById('MainScreen').value = TITLES_PAGE_1; document.getElementById('TITLES_PAGE_AREA').value = TITLES_PAGE_AREA_1;}
+if(xTitlesPage == 2){document.getElementById('MainScreen').value = TITLES_PAGE_2; document.getElementById('TITLES_PAGE_AREA').value = TITLES_PAGE_AREA_2;}
+if(xTitlesPage == 3){document.getElementById('MainScreen').value = TITLES_PAGE_3; document.getElementById('TITLES_PAGE_AREA').value = TITLES_PAGE_AREA_3;}
+if(xTitlesPage == 4){document.getElementById('MainScreen').value = TITLES_PAGE_4; document.getElementById('TITLES_PAGE_AREA').value = TITLES_PAGE_AREA_4;}
+if(xTitlesPage == 5){document.getElementById('MainScreen').value = TITLES_PAGE_5; document.getElementById('TITLES_PAGE_AREA').value = TITLES_PAGE_AREA_5;}
+if(xTitlesPage == 6){document.getElementById('MainScreen').value = TITLES_PAGE_6; document.getElementById('TITLES_PAGE_AREA').value = TITLES_PAGE_AREA_6;}
 }
 
 

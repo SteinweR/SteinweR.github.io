@@ -14,23 +14,36 @@
 
 <textarea hidden class="AREA" id="NEWGAME_BUTTON" onmouseover="ButtonLightEffect('NEWGAME_BUTTON')" onmouseout="ButtonLightEffect('RESET_1')" readonly></textarea>
 <textarea hidden class="AREA" id="OPTIONS_OPEN_BUTTON"onmouseover="ButtonLightEffect('OPTIONS_OPEN_BUTTON')" onmouseout="ButtonLightEffect('RESET_1')" onclick="OPTIONS('act');" readonly></textarea>
-<textarea hidden class="AREA" id="TITLES_OPEN_BUTTON" onmouseover="ButtonLightEffect('TITLES_OPEN_BUTTON')" onmouseout="ButtonLightEffect('RESET_1')" readonly></textarea>
-<textarea hidden class="AREA" id="CHANGELOG_OPEN_BUTTON" onmouseover="ButtonLightEffect('CHANGELOG_OPEN_BUTTON')" onmouseout="ButtonLightEffect('RESET_1')" readonly></textarea>
+<textarea hidden class="AREA" id="TITLES_OPEN_BUTTON" onmouseover="ButtonLightEffect('TITLES_OPEN_BUTTON')" onmouseout="ButtonLightEffect('RESET_1')" onclick="TITLES('act');" readonly></textarea>
+<textarea hidden class="AREA" id="CHANGELOG_OPEN_BUTTON" onmouseover="ButtonLightEffect('CHANGELOG_OPEN_BUTTON')" onmouseout="ButtonLightEffect('RESET_1')" onclick="CHANGELOG('act');" readonly></textarea>
 
-<textarea hidden class="AREA" id="OPTIONS_BACK_BUTTON" onmouseover="ButtonLightEffect('OPTIONS_1_LIGHT_1')" onmouseout="ButtonLightEffect('RESET_2')" onclick="OPTIONS('!act');" readonly></textarea>
-<textarea hidden class="AREA" id="OPTIONS_LOAD_BUTTON" onmouseover="ButtonLightEffect('OPTIONS_1_LIGHT_2')" onmouseout="ButtonLightEffect('RESET_2')" onclick="OPTIONS('load');" readonly></textarea>
-<textarea hidden class="AREA" id="OPTIONS_SAVE_BUTTON" onmouseover="ButtonLightEffect('OPTIONS_1_LIGHT_3')" onmouseout="ButtonLightEffect('RESET_2')" onclick="OPTIONS('save');" readonly></textarea>
-<textarea hidden class="AREA" id="OPTIONS_SOUND_BUTTON" onmouseover="ButtonLightEffect('OPTIONS_1_LIGHT_4')" onmouseout="ButtonLightEffect('RESET_2')" onclick="OPTIONS('checksound');" readonly></textarea>
-<textarea hidden class="AREA" id="OPTIONS_SEND_BUTTON" onmouseover="ButtonLightEffect('OPTIONS_1_LIGHT_5')" onmouseout="ButtonLightEffect('RESET_2')" onclick="OPTIONS('send');" readonly></textarea>
+<textarea hidden class="AREA" id="OPTIONS_BACK_BUTTON" onmouseover="ButtonLightEffect('OPTIONS_BACK_BUTTON')" onmouseout="ButtonLightEffect('RESET_2')" onclick="OPTIONS('!act');" readonly></textarea>
+<textarea hidden class="AREA" id="OPTIONS_LOAD_BUTTON" onmouseover="ButtonLightEffect('OPTIONS_LOAD_BUTTON')" onmouseout="ButtonLightEffect('RESET_2')" onclick="OPTIONS('load');" readonly></textarea>
+<textarea hidden class="AREA" id="OPTIONS_SAVE_BUTTON" onmouseover="ButtonLightEffect('OPTIONS_SAVE_BUTTON')" onmouseout="ButtonLightEffect('RESET_2')" onclick="OPTIONS('save');" readonly></textarea>
+<textarea hidden class="AREA" id="OPTIONS_SOUND_BUTTON" onmouseover="ButtonLightEffect('OPTIONS_SOUND_BUTTON')" onmouseout="ButtonLightEffect('RESET_2')" onclick="OPTIONS('checksound');" readonly></textarea>
+<textarea hidden class="AREA" id="OPTIONS_SEND_BUTTON" onmouseover="ButtonLightEffect('OPTIONS_SEND_BUTTON')" onmouseout="ButtonLightEffect('RESET_2')" onclick="OPTIONS('send');" readonly></textarea>
 
 <textarea hidden class="AREA" id="SpecialCode" maxlength="402"></textarea>
 <textarea hidden class="AREA" id="MUSIC_AREA" readonly></textarea>
 <textarea hidden class="AREA" id="SOUND_AREA" readonly></textarea>
 
-<button hidden class="SOUNDandMUSIC_BUTTON" id="MUSIC_DOWN" onmouseover="ButtonLightEffect('OPTIONS_1_DOWN_LIGHT_1')" onmouseout="ButtonLightEffect('RESET_4')" onclick="OPTIONS('musicdown');"></button>
-<button hidden class="SOUNDandMUSIC_BUTTON" id="MUSIC_UP" onmouseover="ButtonLightEffect('OPTIONS_1_UP_LIGHT_1')" onmouseout="ButtonLightEffect('RESET_4')" onclick="OPTIONS('musicup');"></button>
-<button hidden class="SOUNDandMUSIC_BUTTON" id="SOUND_DOWN" onmouseover="ButtonLightEffect('OPTIONS_1_DOWN_LIGHT_2')" onmouseout="ButtonLightEffect('RESET_4')" onclick="OPTIONS('sounddown');"></button>
-<button hidden class="SOUNDandMUSIC_BUTTON" id="SOUND_UP" onmouseover="ButtonLightEffect('OPTIONS_1_UP_LIGHT_2')" onmouseout="ButtonLightEffect('RESET_4')" onclick="OPTIONS('soundup');"></button>
+<textarea hidden class="AREA" id="TITLES_BACK_BUTTON" onmouseover="ButtonLightEffect('TITLES_BACK_BUTTON')" onmouseout="ButtonLightEffect('RESET_4')" onclick="TITLES('!act');" readonly></textarea>
+<textarea hidden class="AREA" id="TITLES_PAGE_AREA" readonly></textarea>
+
+<textarea hidden class="AREA" id="TITLES_PAGE_DOWN" onmouseover="ButtonLightEffect('TITLES_PAGE_DOWN')" onmouseout="ButtonLightEffect('RESET_4')" onclick="TITLES('down');" readonly></textarea>
+<textarea hidden class="AREA" id="TITLES_PAGE_UP" onmouseover="ButtonLightEffect('TITLES_PAGE_UP')" onmouseout="ButtonLightEffect('RESET_4')" onclick="TITLES('up');" readonly></textarea>
+
+<textarea hidden class="AREA" id="CHANGELOG_BACK_BUTTON" onmouseover="ButtonLightEffect('CHANGELOG_BACK_BUTTON')" onmouseout="ButtonLightEffect('RESET_5')" onclick="CHANGELOG('!act');" readonly></textarea>
+<textarea hidden class="AREA" id="CHANGELOG_PAGE_AREA" readonly></textarea>
+
+<textarea hidden class="AREA" id="CHANGELOG_PAGE_DOWN" onmouseover="ButtonLightEffect('CHANGELOG_PAGE_DOWN')" onmouseout="ButtonLightEffect('RESET_5')" onclick="CHANGELOG('down');" readonly></textarea>
+<textarea hidden class="AREA" id="CHANGELOG_PAGE_UP" onmouseover="ButtonLightEffect('CHANGELOG_PAGE_UP')" onmouseout="ButtonLightEffect('RESET_5')" onclick="CHANGELOG('up');" readonly></textarea>
+
+
+<button hidden class="SOUNDandMUSIC_BUTTON" id="MUSIC_DOWN" onmouseover="ButtonLightEffect('MUSIC_DOWN')" onmouseout="ButtonLightEffect('RESET_3')" onclick="OPTIONS('musicdown');"></button>
+<button hidden class="SOUNDandMUSIC_BUTTON" id="MUSIC_UP" onmouseover="ButtonLightEffect('MUSIC_UP')" onmouseout="ButtonLightEffect('RESET_3')" onclick="OPTIONS('musicup');"></button>
+<button hidden class="SOUNDandMUSIC_BUTTON" id="SOUND_DOWN" onmouseover="ButtonLightEffect('SOUND_DOWN')" onmouseout="ButtonLightEffect('RESET_3')" onclick="OPTIONS('sounddown');"></button>
+<button hidden class="SOUNDandMUSIC_BUTTON" id="SOUND_UP" onmouseover="ButtonLightEffect('SOUND_UP')" onmouseout="ButtonLightEffect('RESET_3')" onclick="OPTIONS('soundup');"></button>
 
 
 
