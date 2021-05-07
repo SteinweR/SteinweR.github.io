@@ -191,12 +191,11 @@ color: white;
 
 body{
     background-color: black;
-    font-size: 1em;
 }
 
-
-html * { 
-    max-height:999999px;
+textarea{
+    font-size: 13.35px;
+    overflow: hidden
 }
 
 
