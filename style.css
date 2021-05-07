@@ -125,6 +125,7 @@
     border-color: black;
     color: white;
     outline:none;
+    overflow: visible;
 }
 
 #OPTIONS_SEND_BUTTON{
@@ -198,6 +199,7 @@ body{
 textarea{
     font-size: 13.35px;
     overflow: visible;
+    max-height: 9001em;
 }
 
 
