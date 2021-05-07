@@ -124,6 +124,9 @@
     color: white;
     outline:none;
 }
+textarea{
+    font-size: 13.35px;
+}
 
 #OPTIONS_SEND_BUTTON{
     position: absolute;
