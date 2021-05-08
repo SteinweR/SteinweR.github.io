@@ -7,7 +7,9 @@ var heroATK = 2; //Сила атаки героя (Дальнейший урон
 var heroART = [0,0,0,0,0,0,0,0,0,0,0,0];
 var globalSOUND = 0.7; //Преднастройка звуков
 var globalMUSIC = 0.7; //Преднастройка музыки
-
+var oldLOCATION = [] ;//Хранит в себе значения прошлой локации , нужен для динамического переключения территорий
+var xOldLOCATION = 0;
+//сначала функция отключает всё кроме main CARDS и потом включает что нужно (Это нужно , в том числе так-же отключается в начале !)
 /*
 Параметры рамки :
 120 , 30
@@ -17,6 +19,14 @@ var globalMUSIC = 0.7; //Преднастройка музыки
 
 //Основые каналы звуков
 var audioBUTTON = new Audio();
+var S1 = new Audio();
+var S2 = new Audio();
+var M1 = new Audio();
+var M2 = new Audio();
+S1.preload = 'auto';
+S2.preload = 'auto';
+M1.preload = 'auto';
+M2.preload = 'auto';
 audioBUTTON.preload = 'auto';
 
 //Включаем основные CARDS
@@ -25,11 +35,9 @@ HiddenSwith('MainBorder','on');
 HiddenSwith('MainTop','on');
 
 
-//Включаем превостепенные CARDS
-HiddenSwith('NEWGAME_BUTTON','on');
-HiddenSwith('OPTIONS_OPEN_BUTTON','on');
-HiddenSwith('TITLES_OPEN_BUTTON','on');
-HiddenSwith('CHANGELOG_OPEN_BUTTON','on');
+//Активация меню
+ChangePlase('MAINMENU','next');
+
 //CARDS для поднастройки
 
 
@@ -110,49 +118,12 @@ function HiddenSwith(id,mode){if(mode == 'on'){document.getElementById(id).hidde
 //Активация настроек
 function OPTIONS(mode){
 if(mode == 'act'){
-//Сначала меняет TOP и SCREEN
-document.getElementById('MainTop').value = TOP_2;
-document.getElementById('MainScreen').value = OPTIONS_1;
-HiddenSwith('OPTIONS_BACK_BUTTON','on');
-HiddenSwith('OPTIONS_SAVE_BUTTON','on');
-HiddenSwith('OPTIONS_LOAD_BUTTON','on');
-HiddenSwith('OPTIONS_SOUND_BUTTON','on');
-HiddenSwith('SpecialCode','on');
-HiddenSwith('OPTIONS_SEND_BUTTON','on');
-HiddenSwith('MUSIC_AREA','on');
-HiddenSwith('SOUND_AREA','on');
-HiddenSwith('MUSIC_DOWN','on');
-HiddenSwith('SOUND_DOWN','on');
-HiddenSwith('MUSIC_UP','on');
-HiddenSwith('SOUND_UP','on');
-
-HiddenSwith('NEWGAME_BUTTON','off');
-HiddenSwith('OPTIONS_OPEN_BUTTON','off');
-HiddenSwith('TITLES_OPEN_BUTTON','off');
-HiddenSwith('CHANGELOG_OPEN_BUTTON','off');
+ChangePlase('OPTIONS','next');
 }
 if(mode == '!act'){
-document.getElementById('MainTop').value = TOP_1;
-document.getElementById('MainScreen').value = OP_1;
-HiddenSwith('OPTIONS_BACK_BUTTON','off');
-HiddenSwith('OPTIONS_SAVE_BUTTON','off');
-HiddenSwith('OPTIONS_LOAD_BUTTON','off');
-HiddenSwith('OPTIONS_SOUND_BUTTON','off');
-HiddenSwith('SpecialCode','off');
-HiddenSwith('OPTIONS_SEND_BUTTON','off');
-HiddenSwith('MUSIC_AREA','off');
-HiddenSwith('SOUND_AREA','off');
-HiddenSwith('MUSIC_DOWN','off');
-HiddenSwith('SOUND_DOWN','off');
-HiddenSwith('MUSIC_UP','off');
-HiddenSwith('SOUND_UP','off');
-
-
-HiddenSwith('NEWGAME_BUTTON','on');
-HiddenSwith('OPTIONS_OPEN_BUTTON','on');
-HiddenSwith('TITLES_OPEN_BUTTON','on');
-HiddenSwith('CHANGELOG_OPEN_BUTTON','on');
+ChangePlase('','back');
 }
+
 if(mode == 'load'){
 }
 if(mode == 'save'){
@@ -234,25 +205,15 @@ if(globalMUSIC == 0.0){document.getElementById('MUSIC_AREA').value = OPTIONS_1_M
 
 var xChangelogPage = 1;
 
+//Активация списка изменений
 function CHANGELOG(mode){
 
 if(mode == 'act'){
-document.getElementById('MainScreen').value = CHANGELOG_PAGE_1;
-document.getElementById('CHANGELOG_PAGE_AREA').value = CHANGELOG_PAGE_AREA_1;
-document.getElementById('MainTop').value = TOP_2;
-HiddenSwith('CHANGELOG_BACK_BUTTON','on');
-HiddenSwith('CHANGELOG_PAGE_AREA','on');
-HiddenSwith('CHANGELOG_PAGE_DOWN','on');
-HiddenSwith('CHANGELOG_PAGE_UP','on');
+ChangePlase('CHANGELOG','next');
 xTitlesPage = 1;
 }
 if(mode == '!act'){
-document.getElementById('MainScreen').value = OP_1;
-document.getElementById('MainTop').value = TOP_1;
-HiddenSwith('CHANGELOG_BACK_BUTTON','off');
-HiddenSwith('CHANGELOG_PAGE_AREA','off');
-HiddenSwith('CHANGELOG_PAGE_DOWN','off');
-HiddenSwith('CHANGELOG_PAGE_UP','off');
+ChangePlase('','back');
 }
 
 if(mode == 'up' && xChangelogPage !=6){
@@ -275,25 +236,15 @@ if(xChangelogPage == 6){document.getElementById('MainScreen').value = CHANGELOG_
 
 var xTitlesPage = 1;
 
+//Активация титров
 function TITLES(mode){
 
 if(mode == 'act'){
-document.getElementById('MainScreen').value = TITLES_PAGE_1;
-document.getElementById('TITLES_PAGE_AREA').value = TITLES_PAGE_AREA_1;
-document.getElementById('MainTop').value = TOP_2;
-HiddenSwith('TITLES_BACK_BUTTON','on');
-HiddenSwith('TITLES_PAGE_AREA','on');
-HiddenSwith('TITLES_PAGE_DOWN','on');
-HiddenSwith('TITLES_PAGE_UP','on');
+ChangePlase('TITLES','next');
 xTitlesPage = 1;
 }
 if(mode == '!act'){
-document.getElementById('MainScreen').value = OP_1;
-document.getElementById('MainTop').value = TOP_1;
-HiddenSwith('TITLES_BACK_BUTTON','off');
-HiddenSwith('TITLES_PAGE_AREA','off');
-HiddenSwith('TITLES_PAGE_DOWN','off');
-HiddenSwith('TITLES_PAGE_UP','off');
+ChangePlase('','back');
 }
 
 if(mode == 'up' && xTitlesPage !=6){
@@ -314,3 +265,144 @@ if(xTitlesPage == 6){document.getElementById('MainScreen').value = TITLES_PAGE_6
 
 }
 
+
+
+function PlaySOM(channel,name){
+
+S1.volume = globalSOUND;
+S2.volume = globalSOUND;
+M1.volume = globalMUSIC;
+M2.volume = globalMUSIC;
+
+if(channel == 'S1'){
+if(name == 'button_1'){S1.src="sound/" + name + ".wav"; S1.play();}
+if(name == 'button_1_back'){S1.src="sound/" + name + ".wav"; S1.play();}
+if(name == 'button_any_pages'){S1.src="sound/" + name + ".wav"; S1.play();}
+if(name == 'button_save'){S1.src="sound/" + name + ".wav"; S1.play();}
+if(name == 'button_load'){S1.src="sound/" + name + ".wav"; S1.play();}
+if(name == 'button_sound_down'){S1.src="sound/" + name + ".wav"; S1.play();}
+if(name == 'button_sound_up'){S1.src="sound/" + name + ".wav"; S1.play();}
+}
+if(channel == 'S2'){
+    
+}
+if(channel == 'M1'){
+    
+}
+if(channel == 'M2'){
+    
+}
+
+
+
+
+}
+
+function NEWGAME(mode){
+
+
+}
+
+
+
+//Функция динамического перемещения
+function ChangePlase(newPlace,mode){
+//Находим будущую позицию
+if(mode != 'back' && newPlace != ''){
+oldLOCATION[xOldLOCATION] = newPlace;
+}
+let place = '';
+if(mode == 'back'){
+try{
+xOldLOCATION = xOldLOCATION - 1;
+place = oldLOCATION[xOldLOCATION - 1];
+oldLOCATION[xOldLOCATION + 1] = '';
+} catch {}
+}
+if(mode == 'next'){
+place = oldLOCATION[xOldLOCATION];
+xOldLOCATION = xOldLOCATION + 1;
+}
+
+//Отключаем всё кроме main CARDS 
+try{
+HiddenSwith('TITLES_BACK_BUTTON','off');
+HiddenSwith('TITLES_PAGE_AREA','off');
+HiddenSwith('TITLES_PAGE_DOWN','off');
+HiddenSwith('TITLES_PAGE_UP','off');
+} catch {}
+try{
+HiddenSwith('CHANGELOG_BACK_BUTTON','off');
+HiddenSwith('CHANGELOG_PAGE_AREA','off');
+HiddenSwith('CHANGELOG_PAGE_DOWN','off');
+HiddenSwith('CHANGELOG_PAGE_UP','off');
+} catch {}
+try {
+HiddenSwith('OPTIONS_BACK_BUTTON','off');
+HiddenSwith('OPTIONS_SAVE_BUTTON','off');
+HiddenSwith('OPTIONS_LOAD_BUTTON','off');
+HiddenSwith('OPTIONS_SOUND_BUTTON','off');
+HiddenSwith('SpecialCode','off');
+HiddenSwith('OPTIONS_SEND_BUTTON','off');
+HiddenSwith('MUSIC_AREA','off');
+HiddenSwith('SOUND_AREA','off');
+HiddenSwith('MUSIC_DOWN','off');
+HiddenSwith('SOUND_DOWN','off');
+HiddenSwith('MUSIC_UP','off');
+HiddenSwith('SOUND_UP','off');
+} catch {}
+try{
+HiddenSwith('NEWGAME_BUTTON','off');
+HiddenSwith('OPTIONS_OPEN_BUTTON','off');
+HiddenSwith('TITLES_OPEN_BUTTON','off');
+HiddenSwith('CHANGELOG_OPEN_BUTTON','off');
+} catch {}
+
+//Включаем в зависимости от значения place
+if(place == 'TITLES'){
+document.getElementById('MainScreen').value = TITLES_PAGE_1;
+document.getElementById('TITLES_PAGE_AREA').value = TITLES_PAGE_AREA_1;
+document.getElementById('MainTop').value = TOP_2;
+HiddenSwith('TITLES_BACK_BUTTON','on');
+HiddenSwith('TITLES_PAGE_AREA','on');
+HiddenSwith('TITLES_PAGE_DOWN','on');
+HiddenSwith('TITLES_PAGE_UP','on');
+}
+
+if(place == 'CHANGELOG'){
+document.getElementById('MainScreen').value = CHANGELOG_PAGE_1;
+document.getElementById('CHANGELOG_PAGE_AREA').value = CHANGELOG_PAGE_AREA_1;
+document.getElementById('MainTop').value = TOP_2;
+HiddenSwith('CHANGELOG_BACK_BUTTON','on');
+HiddenSwith('CHANGELOG_PAGE_AREA','on');
+HiddenSwith('CHANGELOG_PAGE_DOWN','on');
+HiddenSwith('CHANGELOG_PAGE_UP','on');
+}
+
+if(place == 'MAINMENU'){
+document.getElementById('MainScreen').value = OP_1;
+document.getElementById('MainTop').value = TOP_1;
+HiddenSwith('NEWGAME_BUTTON','on');
+HiddenSwith('OPTIONS_OPEN_BUTTON','on');
+HiddenSwith('TITLES_OPEN_BUTTON','on');
+HiddenSwith('CHANGELOG_OPEN_BUTTON','on');
+}
+
+if(place == 'OPTIONS'){
+document.getElementById('MainTop').value = TOP_2;
+document.getElementById('MainScreen').value = OPTIONS_1;
+HiddenSwith('OPTIONS_BACK_BUTTON','on');
+HiddenSwith('OPTIONS_SAVE_BUTTON','on');
+HiddenSwith('OPTIONS_LOAD_BUTTON','on');
+HiddenSwith('OPTIONS_SOUND_BUTTON','on');
+HiddenSwith('SpecialCode','on');
+HiddenSwith('OPTIONS_SEND_BUTTON','on');
+HiddenSwith('MUSIC_AREA','on');
+HiddenSwith('SOUND_AREA','on');
+HiddenSwith('MUSIC_DOWN','on');
+HiddenSwith('SOUND_DOWN','on');
+HiddenSwith('MUSIC_UP','on');
+HiddenSwith('SOUND_UP','on');
+}
+//console.log("Список : " + oldLOCATION + " Место: " + place + " Номер X :" + xOldLOCATION);
+}
