@@ -33,9 +33,11 @@ M1.preload = 'auto';
 
 
 
+
+
 //Вводим MAIN данные
 document.getElementById('MainBorder').value = BORDER_1;
-document.getElementById('MainScreen').value = OP_1;
+document.getElementById('MainScreen').value = MAIN_SCENE;
 document.getElementById('MainTop').value = TOP_1;
 
 document.getElementById('NEWGAME_BUTTON').value = NEWGAME_BUTTON_1;
@@ -478,7 +480,7 @@ HiddenSwith('CHANGELOG_PAGE_UP','on');
 }
 
 if(place == 'MAINMENU'){
-document.getElementById('MainScreen').value = OP_1;
+document.getElementById('MainScreen').value = MAIN_SCENE;
 document.getElementById('MainTop').value = TOP_1;
 HiddenSwith('NEWGAME_BUTTON','on');
 HiddenSwith('OPTIONS_OPEN_BUTTON','on');
