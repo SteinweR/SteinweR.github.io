@@ -29,6 +29,10 @@ M1.preload = 'auto';
 M2.preload = 'auto';
 audioBUTTON.preload = 'auto';
 
+
+loadSound();
+
+
 //Включаем основные CARDS
 HiddenSwith('MainScreen','on');
 HiddenSwith('MainBorder','on');
@@ -405,4 +409,15 @@ HiddenSwith('MUSIC_UP','on');
 HiddenSwith('SOUND_UP','on');
 }
 //console.log("Список : " + oldLOCATION + " Место: " + place + " Номер X :" + xOldLOCATION);
+}
+
+//Перебрать все звуки
+function loadSound(){
+    S1.volume = 0.0;
+    let SoundCollection = ['button_1','button_1_back','button_any_pages','button_save','button_load','button_sound_down','button_sound_up'];
+    S1.src = 'sound/' + SoundCollection[0] + '.wav';
+    S1.play();
+    if (S1.paused){
+    }
+
 }
