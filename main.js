@@ -22,9 +22,9 @@ var audioBUTTON = new Audio();
 var S1 = new Audio();
 var S2 = new Audio();
 var M1 = new Audio();
-S1.preload = 'true';
-S2.preload = 'true';
-M1.preload = 'true';
+S1.preload = 'auto';
+S2.preload = 'auto';
+M1.preload = 'auto';
 
 
 PlaySOM('','load');
