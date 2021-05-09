@@ -33,8 +33,6 @@ M1.preload = 'auto';
 
 
 
-
-
 //Вводим MAIN данные
 document.getElementById('MainBorder').value = BORDER_1;
 document.getElementById('MainScreen').value = OP_1;
