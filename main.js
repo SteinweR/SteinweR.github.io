@@ -30,19 +30,6 @@ S2.preload = 'auto';
 M1.preload = 'auto';
 
 
-PlaySOM('','load');
-
-//Включаем основные CARDS
-HiddenSwith('MainScreen','on');
-HiddenSwith('MainBorder','on');
-HiddenSwith('MainTop','on');
-
-
-//Активация меню и загрузочного экрана
-ChangePlase('MAINMENU','next');
-ChangePlase('LOADSCREEN','next');
-
-//CARDS для поднастройки
 
 
 
@@ -81,6 +68,21 @@ document.getElementById('SOUND_DOWN').innerHTML = OPTIONS_1_DOWN;
 document.getElementById('MUSIC_UP').innerHTML = OPTIONS_1_UP;
 document.getElementById('SOUND_UP').innerHTML = OPTIONS_1_UP;
 
+document.getElementById('LOAD_BAR_BUTTON').value = LOAD_BAR_BUTTON_1;
+
+
+
+//Включаем основные CARDS
+HiddenSwith('MainScreen','on');
+HiddenSwith('MainBorder','on');
+HiddenSwith('MainTop','on');
+
+
+//Активация меню и загрузочного экрана
+ChangePlase('MAINMENU','next');
+ChangePlase('LOADSCREEN','next');
+
+//CARDS для поднастройки
 
 
 //Функция для эффекта подсвечивания при наводке / нажатии кнопкок
@@ -110,10 +112,13 @@ if(name == 'CHANGELOG_BACK_BUTTON'){document.getElementById('CHANGELOG_BACK_BUTT
 if(name == 'CHANGELOG_PAGE_DOWN'){document.getElementById('CHANGELOG_PAGE_DOWN').value = CHANGELOG_PAGE_DOWN_2;}
 if(name == 'CHANGELOG_PAGE_UP'){document.getElementById('CHANGELOG_PAGE_UP').value = CHANGELOG_PAGE_UP_2;}
 
+if(name == 'LOAD_BAR_BUTTON'){document.getElementById('LOAD_BAR_BUTTON').value = LOAD_BAR_BUTTON_2;}
+
 if(name == 'RESET_2'){document.getElementById('OPTIONS_BACK_BUTTON').value = OPTIONS_BACK_BUTTON_1; document.getElementById('OPTIONS_SAVE_BUTTON').value = OPTIONS_SAVE_BUTTON_1; document.getElementById('OPTIONS_LOAD_BUTTON').value = OPTIONS_LOAD_BUTTON_1; document.getElementById('OPTIONS_SOUND_BUTTON').value = OPTIONS_SOUND_BUTTON_1; document.getElementById('OPTIONS_SEND_BUTTON').value = OPTIONS_SEND_BUTTON_1;}
 if(name == 'RESET_3'){document.getElementById('MUSIC_DOWN').innerHTML = OPTIONS_1_DOWN; document.getElementById('SOUND_DOWN').innerHTML = OPTIONS_1_DOWN; document.getElementById('SOUND_UP').innerHTML = OPTIONS_1_UP; document.getElementById('MUSIC_UP').innerHTML = OPTIONS_1_UP;}
 if(name == 'RESET_4'){document.getElementById('TITLES_BACK_BUTTON').value = TITLES_BACK_BUTTON_1; document.getElementById('TITLES_PAGE_UP').value = TITLES_PAGE_UP_1; document.getElementById('TITLES_PAGE_DOWN').value = TITLES_PAGE_DOWN_1;}
 if(name == 'RESET_5'){document.getElementById('CHANGELOG_BACK_BUTTON').value = CHANGELOG_BACK_BUTTON_1; document.getElementById('CHANGELOG_PAGE_UP').value = CHANGELOG_PAGE_UP_1; document.getElementById('CHANGELOG_PAGE_DOWN').value = CHANGELOG_PAGE_DOWN_1;}
+if(name == 'RESET_6'){document.getElementById('LOAD_BAR_BUTTON').value = LOAD_BAR_BUTTON_1;}
 }
 
 //Функция влючения / выключения hidden
@@ -297,48 +302,42 @@ if(channel == 'M1'){
 if(channel == '' && name == 'load'){
 var xSound = 0;
 var xSoundMax = 7;
+document.getElementById('MainTop').value = TOP_3;
+HiddenSwith('LOAD_BAR_BUTTON','off');
 var LoadSoundID = setInterval(function(){
 S1.volume = 0.0;
-document.getElementById('MainTop').value = TOP_3;
 if(xSound == 0 && S1.paused){
 S1.src = 'sound/button_1.wav';
-S1.muted = true;
 S1.play();
 xSound = 1;
 }
 if(xSound == 1 && S1.paused){
 S1.src = 'sound/button_1_back.wav';
-S1.muted = true;
 S1.play();
 xSound = 2;
 }
 if(xSound == 2 && S1.paused){
 S1.src = 'sound/button_any_pages.wav';
-S1.muted = true;
 S1.play();
 xSound = 3;
 }
 if(xSound == 3 && S1.paused){
 S1.src = 'sound/button_save.wav';
-S1.muted = true;
 S1.play();
 xSound = 4;
 }
 if(xSound == 4 && S1.paused){
 S1.src = 'sound/button_load.wav';
-S1.muted = true;
 S1.play();
 xSound = 5;
 }
 if(xSound == 5 && S1.paused){
 S1.src = 'sound/button_sound_down.wav';
-S1.muted = true;
 S1.play();
 xSound = 6;
 }
 if(xSound == 6 && S1.paused){
 S1.src = 'sound/button_sound_up.wav';
-S1.muted = true;
 S1.play();
 xSound = 7;
 }
@@ -455,6 +454,10 @@ HiddenSwith('TITLES_OPEN_BUTTON','off');
 HiddenSwith('CHANGELOG_OPEN_BUTTON','off');
 } catch {}
 
+try{
+HiddenSwith('LOAD_BAR_BUTTON','off');
+}catch{}
+
 //Включаем в зависимости от значения place
 if(place == 'TITLES'){
 document.getElementById('MainScreen').value = TITLES_PAGE_1;
@@ -503,6 +506,8 @@ HiddenSwith('SOUND_UP','on');
 }
 
 if(place == 'LOADSCREEN'){
+HiddenSwith('LOAD_BAR_BUTTON','on');
+document.getElementById('MainScreen').value = "";
 
 
 

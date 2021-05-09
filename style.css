@@ -253,6 +253,16 @@ html,body {
     width: 100px;
 }
 
+#LOAD_BAR_BUTTON{
+
+    position: absolute;
+    top: 23px;
+    left: 25px;
+    height: 32px;
+    width: 819px;
+
+}
+
 .SOUNDandMUSIC_BUTTON{
 background-color: black;
 color: white;
