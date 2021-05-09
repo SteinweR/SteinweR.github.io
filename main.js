@@ -302,36 +302,43 @@ S1.volume = 0.0;
 document.getElementById('MainTop').value = TOP_3;
 if(xSound == 0 && S1.paused){
 S1.src = 'sound/button_1.wav';
+S1.muted = true;
 S1.play();
 xSound = 1;
 }
 if(xSound == 1 && S1.paused){
 S1.src = 'sound/button_1_back.wav';
+S1.muted = true;
 S1.play();
 xSound = 2;
 }
 if(xSound == 2 && S1.paused){
 S1.src = 'sound/button_any_pages.wav';
+S1.muted = true;
 S1.play();
 xSound = 3;
 }
 if(xSound == 3 && S1.paused){
 S1.src = 'sound/button_save.wav';
+S1.muted = true;
 S1.play();
 xSound = 4;
 }
 if(xSound == 4 && S1.paused){
 S1.src = 'sound/button_load.wav';
+S1.muted = true;
 S1.play();
 xSound = 5;
 }
 if(xSound == 5 && S1.paused){
 S1.src = 'sound/button_sound_down.wav';
+S1.muted = true;
 S1.play();
 xSound = 6;
 }
 if(xSound == 6 && S1.paused){
 S1.src = 'sound/button_sound_up.wav';
+S1.muted = true;
 S1.play();
 xSound = 7;
 }
