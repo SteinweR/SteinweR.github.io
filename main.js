@@ -22,16 +22,12 @@ var audioBUTTON = new Audio();
 var S1 = new Audio();
 var S2 = new Audio();
 var M1 = new Audio();
-var M2 = new Audio();
-S1.preload = 'auto';
-S2.preload = 'auto';
-M1.preload = 'auto';
-M2.preload = 'auto';
-audioBUTTON.preload = 'auto';
+S1.preload = 'true';
+S2.preload = 'true';
+M1.preload = 'true';
 
 
-loadSound();
-
+PlaySOM('','load');
 
 //Включаем основные CARDS
 HiddenSwith('MainScreen','on');
@@ -39,8 +35,9 @@ HiddenSwith('MainBorder','on');
 HiddenSwith('MainTop','on');
 
 
-//Активация меню
+//Активация меню и загрузочного экрана
 ChangePlase('MAINMENU','next');
+ChangePlase('LOADSCREEN','next');
 
 //CARDS для поднастройки
 
@@ -135,9 +132,9 @@ if(mode == 'save'){
 if(mode == 'checksound'){
     let random = Math.floor(Math.random() * (20 - 1) + 1);
     console.log(random);
-    audioBUTTON.volume = globalSOUND;
-    if(random == 8){audioBUTTON.src = 'sound/button_click.wav';}
-    audioBUTTON.play();
+    S1.volume = globalSOUND;
+    if(random == 8){S1.src = 'sound/button_click.wav';}
+    S1.play();
 }
 
 if(mode == 'send'){
@@ -150,10 +147,10 @@ if(mode == 'send'){
     let x = 0;
     while(end == false){
     try{
-    let aaa = document.querySelector("#" + array[x]);
-    aaa.style.backgroundColor = "#" + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1));
-    aaa = document.querySelector("." + array[x]);
-    aaa.style.backgroundColor = "#" + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1));
+    let obj = document.querySelector("#" + array[x]);
+    obj.style.backgroundColor = "#" + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1));
+    obj = document.querySelector("." + array[x]);
+    obj.style.backgroundColor = "#" + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1)) + String(Math.floor(Math.random() * (10 - 1) + 1));
     } catch {}
     x = x + 1;
     if(x >= array.length){
@@ -276,7 +273,6 @@ function PlaySOM(channel,name){
 S1.volume = globalSOUND;
 S2.volume = globalSOUND;
 M1.volume = globalMUSIC;
-M2.volume = globalMUSIC;
 
 if(channel == 'S1'){
 if(name == 'button_1'){S1.src="sound/" + name + ".wav"; S1.play();}
@@ -293,19 +289,106 @@ if(channel == 'S2'){
 if(channel == 'M1'){
     
 }
-if(channel == 'M2'){
-    
+
+
+if(channel == '' && name == 'load'){
+var xSound = 0;
+var xSoundMax = 7;
+var LoadSoundID = setInterval(function(){
+S1.volume = 0.0;
+document.getElementById('MainTop').value = TOP_3;
+if(xSound == 0 && S1.paused){
+S1.src = 'sound/button_1.wav';
+S1.play();
+xSound = 1;
+}
+if(xSound == 1 && S1.paused){
+S1.src = 'sound/button_1_back.wav';
+S1.play();
+xSound = 2;
+}
+if(xSound == 2 && S1.paused){
+S1.src = 'sound/button_any_pages.wav';
+S1.play();
+xSound = 3;
+}
+if(xSound == 3 && S1.paused){
+S1.src = 'sound/button_save.wav';
+S1.play();
+xSound = 4;
+}
+if(xSound == 4 && S1.paused){
+S1.src = 'sound/button_load.wav';
+S1.play();
+xSound = 5;
+}
+if(xSound == 5 && S1.paused){
+S1.src = 'sound/button_sound_down.wav';
+S1.play();
+xSound = 6;
+}
+if(xSound == 6 && S1.paused){
+S1.src = 'sound/button_sound_up.wav';
+S1.play();
+xSound = 7;
+}
+document.getElementById('MainScreen').value = CreateLoadBar(xSound,xSoundMax,50,3);
+if(xSound == 7){
+clearInterval(LoadSoundID);
+ChangePlase('','back');
+}
+},100);
+
+
+function CreateLoadBar(num,maxNum,indent,rows){
+let str = '\n\n\n\n\n\n\n\n\n';
+let rezNum = num;
+let rezMaxNum = maxNum;
+let rezIndent = indent;
+
+while(rows > 0){
+while(indent > 0){
+str = str + ' ';
+indent = indent - 1;
+}
+indent = rezIndent;
+str = str + '{';
+while(num > 0){
+str = str + '/';
+num = num - 1;
+}
+num = rezNum;
+while(maxNum - num > 0){
+str = str + ' ';
+maxNum = maxNum - 1;
+}
+maxNum = rezMaxNum;
+str = str + '}'
+str = str + '\n';
+while(indent > 0){
+str = str + ' ';
+indent = indent - 1;
+}
+rows = rows - 1;
+}
+return(str);
+}
 }
 
 
 
 
 }
+
+
 
 function NEWGAME(mode){
 
 
 }
+
+
+
 
 
 
@@ -408,16 +491,11 @@ HiddenSwith('SOUND_DOWN','on');
 HiddenSwith('MUSIC_UP','on');
 HiddenSwith('SOUND_UP','on');
 }
-//console.log("Список : " + oldLOCATION + " Место: " + place + " Номер X :" + xOldLOCATION);
+
+if(place == 'LOADSCREEN'){
+
+
+
 }
-
-//Перебрать все звуки
-function loadSound(){
-    S1.volume = 0.0;
-    let SoundCollection = ['button_1','button_1_back','button_any_pages','button_save','button_load','button_sound_down','button_sound_up'];
-    S1.src = 'sound/' + SoundCollection[0] + '.wav';
-    S1.play();
-    if (S1.paused){
-    }
-
+//console.log("Список : " + oldLOCATION + " Место: " + place + " Номер X :" + xOldLOCATION);
 }
