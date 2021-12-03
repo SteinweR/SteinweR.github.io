@@ -1,0 +1,17 @@
+.LoginAndRegisterMenu {
+    display: block;
+}
+
+.MainChatMenu, .ProfileMenu, .OtherProfileMenu, .PrivateMessagesMenu, .OtherPrivateChatMenu, #PrivateMessagesMenu {
+    display: none;
+}
+
+#GlobalChat, #OtherPrivateChat, #MembersMenu, #MembersMenu {
+    width: 15cm;
+    height: 18cm;
+    overflow: auto;
+}
+
+textarea {
+    resize: none;
+}

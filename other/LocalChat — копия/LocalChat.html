@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ru">
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Локальный чат</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+
+    <div class="LoginAndRegisterMenu">
+
+        <h1>Войдите или зарегестриуйстесь:</h1>
+        <h2>Войти:</h2>
+        <h3>Ник:</h3>
+        <input id="nickname_login" type="text" size="40" maxlength="40">
+        <h3>Пароль:</h3>
+        <input id="password_login" type="text" size="40" maxlength="40">
+        <br><br>
+        <button onclick="User('login')">Отправить</button>
+
+        <hr>
+
+        <h2>Зарегестрироваться:</h2>
+        <h3>Ник:</h3>
+        <input id="nickname_register" type="text" size="40" maxlength="40">
+        <h3>Пароль:</h3>
+        <input id="password_register" type="text" size="40" maxlength="40">
+        <br><br>
+        <button onclick="User('register')">Отправить</button>
+
+    </div>
+
+
+    <div class="MainChatMenu">
+        <table border="1">
+            <tr>
+                <th>
+                    <h2>Общий чат</h2>
+                </th>
+            </tr>
+            <tr>
+                <th style="padding-top: 0.2cm; padding-bottom: 0.2cm; padding-left: 0.2cm; padding-right: 0.2cm;">
+                    <div id="GlobalChat">
+
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th style="padding-top: 0.2cm; padding-bottom: 0.2cm; padding-left: 0.2cm; padding-right: 0.2cm;">
+                    <div>
+                        <textarea id="message" cols="70" rows="2" maxlength="163"></textarea>
+                        <br><br>
+                        <button onclick="fillGlobalChat('oneMessage')">Отправить</button>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th style="padding-top: 0.2cm; padding-bottom: 0.2cm; padding-left: 0.2cm; padding-right: 0.2cm;">
+                    <div>
+                        <button style="float: right;" class="ProfileButtonOpen"
+                            onclick="queue('next','ProfileMenu')">Профиль</button>
+                        <button style="float: left;">Личные чаты</button>
+                    </div>
+                </th>
+            </tr>
+        </table>
+    </div>
+
+    <div class="ProfileMenu">
+        <table border="1">
+            <tr>
+                <th>
+                    <h2 id="ProfileName"></h2>
+                    <img src="" id="ProfileAvatar" style="height: 2cm; width: 2cm;">
+                </th>
+            </tr>
+            <tr>
+                <th style="padding-top: 0.2cm; padding-bottom: 0.2cm; padding-left: 0.2cm; padding-right: 0.2cm;">
+                    <div style="float: left;">
+                        <button onclick="User('leave')">Выйти из аккаунта</button>
+                    </div>
+                    <div style="float: right;">
+                        <button class="ProfileButtonClose" onclick="queue('back','')">Обратно к чату</button>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th style="padding-bottom: 0.2cm;">
+                    <h3>Цвет ника и обводки сообщений:</h3>
+                    <b><span>#</span></b><input id="ProfileColor" type="text" size="3" maxlength="6">
+                    <h3>Описание профиля:</h3>
+                    <textarea id="ProfileDescription" cols="50" rows="6" maxlength="480"></textarea>
+                    <br><br>
+                    <button onclick="User('saveProfileData')">Сохранить изменения</button>
+                </th>
+            </tr>
+        </table>
+    </div>
+
+    <div class="OtherProfileMenu">
+        <table border="1">
+            <tr>
+                <th style="padding-left: 0.2cm; padding-right: 0.2cm;">
+                    <h2 id="OtherProfileName"></h2>
+                    <img src="" id="OtherProfileAvatar" style="height: 2cm; width: 2cm;">
+                </th>
+            </tr>
+            <tr>
+                <th style="padding-top: 0.2cm; padding-bottom: 0.2cm; padding-left: 0.2cm; padding-right: 0.2cm;">
+                    <div style="float: right;">
+                        <button class="OtherProfileButtonClose" style="position: inherit; left: 13cm; top: 0.6cm;"
+                            onclick="queue('back','')">Обратно к чату</button>
+                    </div>
+                    <div style="float: left;">
+                        <button>Написать человеку</button>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th style="padding-bottom: 0.2cm; padding-left: 0.2cm; padding-right: 0.2cm;">
+                    <h3>Цвет ника и обводки сообщений:</h3>
+                    <b><span id="OtherProfileColor">#</span></b>
+                    <h3>Описание профиля:</h3>
+                    <textarea id="OtherProfileDescription" cols="50" rows="6" maxlength="480" readonly></textarea>
+                </th>
+            </tr>
+        </table>
+    </div>
+
+    <div class="PrivateMessagesMenu">
+
+        <table border="1">
+            <tr>
+                <th>
+                    <h2>Личные сообщения</h2>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <div id="MembersMenu" style="padding-top: 0.2cm; padding-bottom: 0.2cm; padding-left: 0.2cm; padding-right: 0.2cm;">
+                        <table border="1">
+                            <tr>
+                                <th>
+                                    <h3>Личные сообщения</h3>
+                                </th>
+                            </tr>
+                        </table>
+                        <div style="padding-top: 0.2cm; padding-bottom: 0.2cm; padding-left: 0.2cm; padding-right: 0.2cm;"></div>
+
+                    </div>
+                </th>
+            </tr>
+        </table>
+
+
+    </div>
+
+    <div class="OtherPrivateChatMenu">
+        <h2 id="OtherChatName">123</h2>
+        <div id="OtherPrivateChat">
+
+        </div>
+    </div>
+
+
+    <script src="scripts/jquery-3.6.0.min.js"></script>
+    <script src="scripts/otherFunc.js">
+    </script>
+
+
+</body>
+
+</html>
